@@ -1890,3 +1890,10 @@ L.slot_weapon_unarmed = "Unarmed Slot"
 L.slot_weapon_special = "Special Slot"
 L.slot_weapon_extra = "Extra Slot"
 L.slot_weapon_class = "Class Slot"
+
+
+-- 2023-10-23
+L.submenu_administration_experimental_title = "Experimental"
+L.header_experimental_tweaks = "Experimental Tweaks"
+L.help_unique_playermodels = "Players will receive random models at the beginning of the round... Murder?"
+L.label_unique_playermodels = "Enable Unique Playermodels"

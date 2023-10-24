@@ -23,6 +23,10 @@ local ttt_dyingshot = CreateConVar("ttt_dyingshot", "0", {FCVAR_NOTIFY, FCVAR_AR
 
 ---
 -- @realm server
+local ttt_unique_playermodels = CreateConVar("ttt_unique_playermodels", "1", {FCVAR_NOTIFY, FCVAR_ARCHIVE})
+
+---
+-- @realm server
 CreateConVar("ttt_killer_dna_range", "550", {FCVAR_NOTIFY, FCVAR_ARCHIVE})
 
 ---
@@ -263,7 +267,11 @@ function GM:PlayerSetModel(ply)
 	if not IsValid(ply) then return end
 
 	-- this will call the overwritten internal function to modify the model
-	ply:SetModel(ply.defaultModel or GAMEMODE.playermodel)
+	if ttt_unique_playermodels:GetBool() then
+		ply:SetModel(playermodels.GetRandomPlayerModel())
+	else
+		ply:SetModel(ply.defaultModel or GAMEMODE.playermodel)
+	end
 
 	-- Always clear color state, may later be changed in TTTPlayerSetColor
 	ply:SetColor(COLOR_WHITE)

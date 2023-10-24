@@ -542,21 +542,27 @@ function CORPSE.Create(ply, attacker, dmginfo)
 	local efn = ply.effect_fn
 	ply.effect_fn = nil
 
-	local rag = ents.Create("prop_ragdoll")
+	local rag
+	if ragmod:IsRagdoll(ply) then
+		rag = ragmod:GetRagmodRagdoll(ply)
+	else
+		rag = ragmod:TryToRagdoll(ply)
+	end
+
 	if not IsValid(rag) then return end
 
-	rag:SetPos(ply:GetPos())
-	rag:SetModel(ply:GetModel())
-	rag:SetSkin(ply:GetSkin())
-	rag:SetAngles(ply:GetAngles())
-	rag:SetColor(ply:GetColor())
+	-- rag:SetPos(ply:GetPos())
+	-- rag:SetModel(ply:GetModel())
+	-- rag:SetSkin(ply:GetSkin())
+	-- rag:SetAngles(ply:GetAngles())
+	-- rag:SetColor(ply:GetColor())
 
-	rag:Spawn()
-	rag:Activate()
+	-- rag:Spawn()
+	-- rag:Activate()
 
 	-- nonsolid to players, but can be picked up and shot
-	rag:SetCollisionGroup(COLLISION_GROUP_WEAPON)
-	rag:SetCustomCollisionCheck(true)
+	-- rag:SetCollisionGroup(COLLISION_GROUP_WEAPON)
+	-- rag:SetCustomCollisionCheck(true)
 
 	-- flag this ragdoll as being a player's
 	rag.player_ragdoll = true

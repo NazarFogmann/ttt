@@ -1,7 +1,7 @@
 "terrortown"
 {
 	"base"		"base"
-	"title"		"Trouble in Terrorist Town 2"
+	"title"		"Trouble in Terrorist Town X"
 	"maps"		"^ttt_"
 	"category"	"pvp"
 	"menusystem"	"1"

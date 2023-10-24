@@ -125,11 +125,11 @@ function ENT:Initialize()
 	end
 
 	if not self:GetRadius() then
-		self:SetRadius(1000)
+		self:SetRadius(3000)
 	end
 
 	if not self:GetDmg() then
-		self:SetDmg(200)
+		self:SetDmg(250)
 	end
 end
 
