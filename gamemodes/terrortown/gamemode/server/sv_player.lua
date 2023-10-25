@@ -268,9 +268,15 @@ function GM:PlayerSetModel(ply)
 
 	-- this will call the overwritten internal function to modify the model
 	if ttt_unique_playermodels:GetBool() then
-		if not playermodels.unique_playermodels[ply] then
-			playermodels.unique_playermodels[ply] = playermodels.GetRandomPlayerModel()
-			ply:SetModel(playermodels.unique_playermodels[ply])
+		if not playermodels.uniquePlayermodels[ply] then
+
+			if playermodels.cvGangModels:GetBool() and playermodels.gang[ply:SteamID64()] then
+				playermodels.uniquePlayermodels[ply] = playermodels.gang[ply:SteamID64()]
+			else
+				playermodels.uniquePlayermodels[ply] = playermodels.GetRandomPlayerModel()
+			end
+
+			ply:SetModel(playermodels.uniquePlayermodels[ply])
 		end
 			
 	else

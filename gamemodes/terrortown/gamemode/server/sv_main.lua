@@ -994,7 +994,7 @@ function PrepareRound()
 		GAMEMODE.playermodel = GAMEMODE.force_plymodel
 	elseif cvSelectModelPerRound:GetBool() then
 		GAMEMODE.playermodel = playermodels.GetRandomPlayerModel()
-		playermodels.unique_playermodels = {}
+		playermodels.uniquePlayermodels = {}
 	end
 
 	---

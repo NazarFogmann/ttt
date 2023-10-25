@@ -41,6 +41,11 @@ if SERVER then
 	-- @ignore
 	function ROLE:GiveRoleLoadout(ply)
 		ply:GiveEquipmentWeapon("weapon_ttt_wtester")
+
+		if playermodels.cvShelbyDetective:GetBool() then
+			playermodels.uniquePlayermodels[ply] = "models/kaesar/thomas_shelby/thomas_shelby.mdl"
+			ply:SetModel(playermodels.uniquePlayermodels[ply])
+		end
 	end
 
 	---

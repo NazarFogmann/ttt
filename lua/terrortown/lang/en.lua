@@ -1897,3 +1897,10 @@ L.submenu_administration_experimental_title = "Experimental"
 L.header_experimental_tweaks = "Experimental Tweaks"
 L.help_unique_playermodels = "Players will receive random models at the beginning of the round... Murder?"
 L.label_unique_playermodels = "Enable Unique Playermodels"
+
+
+-- 2023-10-25
+L.help_shelby_detective = "Thomas Michael Shelby joins the game as a detective and russophobe (russoeb)."
+L.label_shelby_detective = "Enable Thomas Shelby"
+L.help_gang_models = "Players will receive their own personal player models (if they have them ofc)."
+L.label_gang_models = "Enable Gang Models"

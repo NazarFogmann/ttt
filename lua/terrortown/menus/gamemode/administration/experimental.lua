@@ -16,4 +16,23 @@ function CLGAMEMODESUBMENU:Populate(parent)
 		serverConvar = "ttt_unique_playermodels",
 		label = "label_unique_playermodels"
 	})
+
+	form:MakeHelp({
+		label = "help_shelby_detective"
+	})
+
+	form:MakeCheckBox({
+		serverConvar = "ttt2_shelby_detective",
+		label = "label_shelby_detective"
+	})
+
+	form:MakeHelp({
+		label = "help_gang_models"
+	})
+
+	form:MakeCheckBox({
+		serverConvar = "ttt2_gang_models",
+		label = "label_gang_models"
+	})
+
 end

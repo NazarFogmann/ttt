@@ -64,12 +64,29 @@ playermodels.accessLevel = TTT2_DATABASE_ACCESS_ANY
 playermodels.fallbackModel = "models/player/phoenix.mdl"
 
 playermodels.hasHeadHitBox = {}
-playermodels.unique_playermodels = {}
+playermodels.uniquePlayermodels = {}
 
 -- Enums for the states
 playermodels.state = {
 	selected = "selected",
 	hattable = "hattable"
+}
+
+playermodels.cvShelbyDetective = CreateConVar("ttt2_shelby_detective", "1", {FCVAR_NOTIFY, FCVAR_ARCHIVE})
+
+playermodels.cvGangModels = CreateConVar("ttt2_gang_models", "0", {FCVAR_NOTIFY, FCVAR_ARCHIVE})
+
+playermodels.gang = {
+	["76561198164503874"] = "models/player/phoenix.mdl", -- Me :^)
+	["76561198073249722"] = "models/player/phoenix.mdl", -- NFogmann
+	["76561198445691523"] = "models/player/phoenix.mdl", -- BombanyTI
+	["76561198092425714"] = "models/player/phoenix.mdl", -- Blinkot
+	["76561198086008629"] = "models/player/phoenix.mdl", -- Torn
+	["76561198029426954"] = "models/player/phoenix.mdl", -- Mohito
+	["76561198136588834"] = "models/player/phoenix.mdl", -- Fotgof
+	["76561198056219390"] = "models/player/phoenix.mdl", -- Alexix
+	["76561198152620069"] = "models/player/phoenix.mdl", -- Tapko4eb
+	["76561198162236852"] = "models/player/phoenix.mdl", -- KaponeS
 }
 
 ---
