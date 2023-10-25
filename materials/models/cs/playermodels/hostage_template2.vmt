@@ -1,0 +1,4 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/CS/Playermodels/Hostage_Template2"
+"$nocull" "1" "$halflambert" "1" }

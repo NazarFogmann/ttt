@@ -1,0 +1,15 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "62ndmaterials/model/ena/tube"
+	"$lightwarptexture" "62ndmaterials/model/ena/lm_cloth"
+	"$phong" "1"
+	"$nocull"	"1"
+	"$phongboost"	".05"
+	"$phongalbedotint" "1"
+	"$phongfresnelranges"	"[.1 .1 .1]"
+	"$PhongExponent" "1"
+	"$halflambert" "1"
+	"$rimlight"	"1"
+	"$rimlightboost"	"10"
+	"$rimlightexponent"       "10"
+}

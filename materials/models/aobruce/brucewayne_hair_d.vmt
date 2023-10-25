@@ -1,0 +1,6 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "BruceWayne_Hair_D"
+	"$bumpmap" "BruceWayne_Hair_N"
+	"$alphatest" 1
+}

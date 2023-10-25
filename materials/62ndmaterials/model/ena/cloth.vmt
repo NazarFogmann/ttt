@@ -1,0 +1,31 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "62ndmaterials/model/ena/cloth"
+	"$lightwarptexture" "62ndmaterials/model/ena/lw_yellow"
+	"$nocull"	"1"
+	"$phong" "1"
+	"$phongboost"	"0.05"
+	"$phongalbedotint" "1"
+	"$phongfresnelranges"	"[1 1 1]"
+	"$PhongExponent" "1"
+	"$halflambert" "1"
+
+	"$blendtintbybasealpha" "1" 
+ 	"$blendtintcoloroverbase" "0"
+
+	Proxies
+
+	{
+
+		PlayerColor
+
+		{
+
+			resultVar	$color2
+
+			default 	0 84 248
+
+		}
+
+	}
+}

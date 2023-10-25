@@ -1,0 +1,12 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "62ndmaterials/model/ena/hair"
+	"$lightwarptexture" "62ndmaterials/model/ena/lw_yellow"
+	"$nocull"	"1"
+	"$phong" "1"
+	"$phongboost"	".05"
+	"$phongalbedotint" "1"
+	"$phongfresnelranges"	"[.1 .1 .1]"
+	"$PhongExponent" "1"
+	"$halflambert" "1"
+}

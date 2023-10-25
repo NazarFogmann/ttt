@@ -29,7 +29,7 @@ SWEP.ViewModel = "models/weapons/cstrike/c_eq_fraggrenade.mdl"
 SWEP.WorldModel = "models/weapons/w_eq_fraggrenade.mdl"
 
 SWEP.Weight = 5
-SWEP.detonate_timer = 1
+SWEP.detonate_timer = 3
 
 ---
 -- really the only difference between grenade weapons: the model and the thrown ent.

@@ -1,0 +1,5 @@
+"UnlitGeneric"
+{
+	"$basetexture" "62ndmaterials/model/ena/head_skin1"
+	"$nocull"	"1"
+}

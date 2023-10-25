@@ -1,0 +1,12 @@
+"UnlitGeneric"
+{
+	"$basetexture" "62ndmaterials/model/ena/ear2"
+	"$lightwarptexture" "62ndmaterials/model/ena/lm_cloth"
+	"$nocull"	"1"
+	"$phong" "1"
+	"$phongboost"	".01"
+	"$phongalbedotint" "1"
+	"$phongfresnelranges"	"[1 1 1]"
+	"$PhongExponent" "1"
+	"$halflambert" "1"
+}

@@ -1,0 +1,14 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/kaesar/thomas_shelby/Vest_diffuse"
+	"$bumpmap" "models/kaesar/thomas_shelby/Vest_normal"
+
+	"$phong" "1"
+	"$phongexponent" "5"
+	"$phongboost" "0.1"	
+	"$phongfresnelranges"	"[.07 .07 .07]"
+	"$halflambert" "1"
+
+}
+
+

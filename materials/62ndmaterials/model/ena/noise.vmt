@@ -1,0 +1,14 @@
+"UnlitGeneric"
+{
+	"$basetexture" "62ndmaterials/model/ena/noise"
+	"$translucent"	"1"
+	"Proxies"
+	{
+	"AnimatedTexture"
+	{
+	"animatedTextureVar" "$basetexture"
+	"animatedTextureFrameNumVar" "$frame"
+	"animatedTextureFrameRate" "15"
+	}
+	}
+}

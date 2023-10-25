@@ -1,0 +1,4 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/CS/Playermodels/ARTIC_Working2"
+"$nocull" "1" "$halflambert" "1" }
