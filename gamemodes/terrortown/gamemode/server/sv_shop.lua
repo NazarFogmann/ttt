@@ -124,6 +124,10 @@ local function OrderEquipment(ply, cls)
 		return
 	end
 
+	if ragmod:IsRagdoll(ply) then
+		return
+	end
+
 	-- still support old items
 	local idOrCls = (isItem and equip_table.oldId or nil) or cls
 

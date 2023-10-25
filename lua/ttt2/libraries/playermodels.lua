@@ -64,6 +64,7 @@ playermodels.accessLevel = TTT2_DATABASE_ACCESS_ANY
 playermodels.fallbackModel = "models/player/phoenix.mdl"
 
 playermodels.hasHeadHitBox = {}
+playermodels.unique_playermodels = {}
 
 -- Enums for the states
 playermodels.state = {

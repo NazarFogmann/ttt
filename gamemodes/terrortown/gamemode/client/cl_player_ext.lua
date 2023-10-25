@@ -273,3 +273,7 @@ end
 function plymeta:GetRevivalReason()
 	return self.revivalReason or {}
 end
+
+hook.Add("RM_CanChangeCamera", "ragmod_CanChangeCamera", function(ply)
+	return !ply:IsSpec()
+end)

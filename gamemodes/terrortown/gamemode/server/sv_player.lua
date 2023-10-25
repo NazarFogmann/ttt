@@ -268,7 +268,11 @@ function GM:PlayerSetModel(ply)
 
 	-- this will call the overwritten internal function to modify the model
 	if ttt_unique_playermodels:GetBool() then
-		ply:SetModel(playermodels.GetRandomPlayerModel())
+		if not playermodels.unique_playermodels[ply] then
+			playermodels.unique_playermodels[ply] = playermodels.GetRandomPlayerModel()
+			ply:SetModel(playermodels.unique_playermodels[ply])
+		end
+			
 	else
 		ply:SetModel(ply.defaultModel or GAMEMODE.playermodel)
 	end
