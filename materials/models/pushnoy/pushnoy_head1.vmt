@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/pushnoy/pushnoy_head1"
+	$halflambert 1
+}
