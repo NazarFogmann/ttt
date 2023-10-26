@@ -89,6 +89,7 @@ playermodels.gang = {
 	["76561198162236852"] = "models/player/phoenix.mdl", -- KaponeS
 	["76561198157340998"] = "models/player/phoenix.mdl", -- Kalik
 	["76561198327554890"] = "models/player/phoenix.mdl", -- Bon
+	["76561198047777375"] = "models/player/phoenix.mdl", -- Orange
 }
 
 ---

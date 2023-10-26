@@ -34,7 +34,7 @@ if CLIENT then
 end
 
 C4_WIRE_COUNT	= 6
-C4_MINIMUM_TIME = 45
+C4_MINIMUM_TIME = 40
 C4_MAXIMUM_TIME = 600
 
 ENT.Type = "anim"
@@ -259,8 +259,8 @@ function ENT:SphereDamage(dmgowner, center, radius)
 
 		-- deadly up to a certain range, then a quick falloff within 100 units
 		d = math.max(0, math.sqrt(d) - 490)
-		dmg = -0.01 * (d * d) + 125
-
+		dmg = math.max(0, -0.01 * (d * d) + 125)
+		
 		local dmginfo = DamageInfo()
 		dmginfo:SetDamage(dmg)
 		dmginfo:SetAttacker(dmgowner)
