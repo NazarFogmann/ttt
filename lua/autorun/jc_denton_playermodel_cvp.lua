@@ -1,0 +1,1 @@
+player_manager.AddValidModel( "JC Denton", 					"models/player/lordvipes/de_jc/jcplayer.mdl" )

@@ -1,0 +1,7 @@
+"VertexLitGeneric"
+{
+
+	"$basetexture" "models\2spookyguys/hair"
+	$translucent 1
+}
+

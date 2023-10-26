@@ -1,0 +1,12 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/neomatrix/boots"
+	"$bumpmap" "models/neomatrix/boots_normal"
+	"$halflambert" "1"
+	
+	"$model" "1"
+	"$phong" "1"
+	"$phongboost" "0.1"
+	"$phongexponent" "10"
+	"$phongfresnelranges"	"[0.2 2 10]"
+}

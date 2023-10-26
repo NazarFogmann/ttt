@@ -1,0 +1,5 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/player/kgb/kgb_hood"
+	"$nocull" 1
+}

@@ -1,0 +1,17 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models\player\lordvipes\de_jc\hands_w"
+                "$bumpmap"     "models\player\lordvipes\de_jc\hands_n"
+	"$nocull" 1
+
+                "$phong" "1"
+	"$phongexponent" "5"
+	"$phongboost" "1"	
+	"$phongfresnelranges"	"[.1 0.2 1]"
+	"$halflambert" "1"
+
+	"$detail" "models\player\lordvipes\de_jc\hands_G"
+	"$detailscale" "1"
+	"$detailblendfactor" "1"
+	"$detailblendmode" "5"
+}

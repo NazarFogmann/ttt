@@ -1,0 +1,2 @@
+player_manager.AddValidModel( "Terry Andrew Davis",                     "models/player/griffbo/TerranceDavis.mdl" )
+player_manager.AddValidHands( "Terry Andrew Davis", "models/player/Griffbo/TerranceArms.mdl", 0, "00000000" )

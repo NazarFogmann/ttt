@@ -1,0 +1,11 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/player/strelok/face_d"
+	"$bumpmap" "models/player/strelok/face_n"
+	"$halflambert" 1
+	"$phong" "1"
+	"$phongtint" "[0.9 0.6 0.9]"
+	"$phongboost" "2.0"
+	"$phongexponent" "10"
+	"$phongfresnelranges" "[0.4 0.2 1]"
+}

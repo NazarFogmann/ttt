@@ -1,0 +1,15 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models\ninja/mgs5/bigboss/sna2_main1_sub_bsm"
+    "$bumpmap"    "models\ninja/mgs5/bigboss/sna2_main1_sub_nrm"
+
+	"$lightwarptexture" 	"models\ninja/mgs5/Clothes_wrp"
+	"$phong" "1"
+	"$phongexponenttexture" "models/ninja/mgs5/bigboss/sna2_main0_sub_exp"
+	"$phongexponent" 9
+	"$phongboost" "0.065"
+	"$phongfresnelranges"	"[5 6 8]"
+	"$PhongAlbedoTint" "1"
+}
+
+

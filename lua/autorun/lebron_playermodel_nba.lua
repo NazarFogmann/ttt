@@ -1,0 +1,1 @@
+player_manager.AddValidModel( "Lebron James", "models/nba2k11/players/lebron/lebron_james.mdl" );

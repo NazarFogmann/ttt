@@ -1,0 +1,17 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/ninja/mgs5/bigboss/sna2_hair0_def_bsm_alp"
+	"$bumpmap" "models/ninja/mgs5/bigboss/sna2_hair0_def_nrm"
+	"$translucent" 1
+	"$lightwarptexture" "models/ninja/mgs5/shared/hairwarp_brown"
+	"$phongexponenttexture" "models/ninja/mgs5/shared/green"
+	"$phongtint" "[1.25 0.75 0.55]"
+	"$phongexponent" "11"
+	"$phongalbedotint" 1
+	"$phong" "1"
+	"$phongwarptexture"  "models/ninja/mgs5/shared/phongwarp_brown"
+	"$halflambert" 1
+	"$phongboost"	"0.01"
+	"$phongfresnelranges"	"[5 6 8]"
+$ambientocclusion 0
+}

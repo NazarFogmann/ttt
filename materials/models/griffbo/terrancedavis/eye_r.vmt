@@ -1,0 +1,33 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/griffbo/TerranceDavis/Eye_R"
+	"$bumpmap" "models/griffbo/TerranceDavis/blank_n"
+
+    //$color 0.0.0
+    //"$blendTintByBaseAlpha"    "1"
+
+    $nocull 1
+    $normalmapalphaenvmapmask 1
+
+    //"$envmap" "env_cubemap"
+    "$envmaptint" "[ 0.005 0.005 0.005]"
+    "$envmapFresnel"  "[5 7 8] "
+    "$envmaptint" "[3.77 0.8 1]"
+
+
+    "$phong" "1"
+    "$phongboost"    "0.01"
+    "$phongexponent" 8
+    $phongboost    0.2
+    $phongfresnelranges    "[0.06 0.5 15]"
+    $halflambert 1
+    $nocull 1
+    "$phongfresnelranges"    "[5 7 8]"
+    "$phongtint"             "[0.77 0.8 1]"
+    "$PhongAlbedoTint" "1"
+
+    "$rimlight" "1"
+    "$rimlightexponent" "3"
+    "$rimlightboost" ".2"
+    "$rimmask" "1"
+}

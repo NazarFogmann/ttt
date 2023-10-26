@@ -1,0 +1,16 @@
+"vertexlitgeneric"
+//"Teeth"
+{
+	"$baseTexture" "models\nabiguzoje\weedfreeman\gmouth2_dif"
+	//"$clientshader" "MouthShader"	
+	"$bumpmap" "models\nabiguzoje\weedfreeman\gmouth2_normal"
+	
+	"$halflambert" "0"
+
+	"$ambientocclusion" "1"
+	
+	"$phong" "1"
+	"$phongboost" "4"
+	"$phongexponent" "32"
+	"$phongfresnelranges" "[.1 .4 1]"
+}

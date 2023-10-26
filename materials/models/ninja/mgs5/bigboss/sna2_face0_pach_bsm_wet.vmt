@@ -1,0 +1,15 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models\ninja/mgs5/bigboss/sna2_face0_pach_bsm"
+                "$bumpmap"    "models\ninja/mgs5/bigboss/sna2_face0_pach_nrm_wet"
+
+	"$phong" "1"
+	"$phongexponent" 13
+	"$phongboost" "0.9"
+	"$phongfresnelranges"	"[5 6 8]"
+	"$PhongAlbedoTint" "1"
+	"$phongexponenttexture" "models\ninja/mgs5/shared/white2"
+	"$lightwarptexture" 	"models\ninja/mgs5/Clothes_wrp"
+}
+
+

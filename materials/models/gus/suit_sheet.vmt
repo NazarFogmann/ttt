@@ -1,0 +1,6 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models\gus\suit_sheet"
+	"$bumpmap" "models\gus\suit_sheet_nml"
+        "$nocull" "1"
+}
