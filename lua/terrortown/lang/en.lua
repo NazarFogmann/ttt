@@ -1904,3 +1904,7 @@ L.help_shelby_detective = "Thomas Michael Shelby joins the game as a detective a
 L.label_shelby_detective = "Enable Thomas Shelby"
 L.help_gang_models = "Players will receive their own personal player models (if they have them ofc)."
 L.label_gang_models = "Enable Gang Models"
+
+
+-- 2023-10-25
+L.too_far_away = "The distance is too great to discern anything specific."

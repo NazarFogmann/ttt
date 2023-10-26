@@ -384,6 +384,9 @@ function targetid.HUDDrawTargetIDPlayers(tData)
 	-- has to be a player
 	if not ent:IsPlayer() then return end
 
+	-- you can't look at yourself
+	if client == ent then return end
+
 	local disguised = ent:GetNWBool("disguised", false)
 
 	-- oof TTT, why so hacky?! Sets last seen player. Dear reader I don't like this as well, but it has to stay that way
@@ -395,6 +398,29 @@ function targetid.HUDDrawTargetIDPlayers(tData)
 
 	-- disguised players are not shown to normal players, except: same team, unknown team or to spectators
 	if disguised and not (client:IsInTeam(ent) and not client:GetSubRoleData().unknownTeam or client:IsSpec()) then return end
+
+	-- don't let you look too far
+	if tData:GetEntityDistance() >= 1750 then
+
+		local c_wep = client:GetActiveWeapon()
+		local binoculars_useable = IsValid(c_wep) and c_wep:GetClass() == "weapon_ttt_binoculars" or false
+
+		if not binoculars_useable then
+			tData:EnableText()
+			tData:SetTitle(
+				TryT("target_unknown"),
+				nil,
+				nil
+			)
+			tData:SetSubtitle(TryT("too_far_away"))
+			tData:AddIcon(
+				materialRoleUnknown,
+				COLOR_SLATEGRAY
+			)
+			return
+		end
+
+	end
 
 	-- show the role of a player if it is known to the client
 	local rstate = GetRoundState()
@@ -476,7 +502,15 @@ function targetid.HUDDrawTargetIDRagdolls(tData)
 	if not IsValid(ent) or ent:GetClass() ~= "prop_ragdoll" then return end
 
 	-- only show this if the ragdoll has a nick, else it could be a mattress
-	if not CORPSE.GetPlayerNick(ent, false) then return end
+	if not CORPSE.GetPlayerNick(ent, false) then 
+		-- my dirty hack
+		if ragmod:IsRagmodRagdoll(ent) then
+			tData.data.ent = ent:GetNWEntity("ragmod_Owner", NULL)
+			targetid.HUDDrawTargetIDPlayers(tData)
+		end
+
+		return 
+	end
 
 	local corpse_found = CORPSE.GetFound(ent, false) or not DetectiveMode()
 	local role_found = corpse_found and ent.search_result and ent.search_result.role

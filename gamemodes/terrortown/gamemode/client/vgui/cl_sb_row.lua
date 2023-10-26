@@ -37,7 +37,7 @@ local dev_tbl = {
 }
 
 local vip_tbl = {
-	["76561198378608300"] = true, -- SirKadeeka / $rã£
+	["76561198378608300"] = true, -- SirKadeeka
 	["76561198102780049"] = true, -- Nick
 	["76561198020955880"] = true, -- V3kta
 	["76561198033468770"] = true, -- dok441
