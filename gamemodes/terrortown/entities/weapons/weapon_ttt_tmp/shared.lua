@@ -4,7 +4,7 @@ else
 	LANG.AddToLanguage("english", "tmp_name", "TMP")
 
 	SWEP.PrintName = "tmp_name"
-	SWEP.Slot = 2
+	SWEP.Slot = 6
 	SWEP.Icon = "vgui/ttt/icon_tmp"
 
 	-- client side model settings
@@ -21,12 +21,13 @@ SWEP.Primary.Ammo = "SMG1"
 SWEP.Primary.Delay = 0.08
 SWEP.Primary.Recoil	= 1.1
 SWEP.Primary.Cone = 0.017
-SWEP.Primary.Damage = 14
+SWEP.Primary.Damage = 18
 SWEP.Primary.Automatic = true
 SWEP.Primary.ClipSize = 30
 SWEP.Primary.ClipMax = 60
 SWEP.Primary.DefaultClip = 30
 SWEP.Primary.Sound = Sound("Weapon_TMP.Single")
+SWEP.Primary.SoundLevel    = 50
 
 --[[Model settings]]--
 SWEP.HoldType = "ar2"
@@ -41,11 +42,11 @@ SWEP.IronSightsAng = Vector (0, 0, 0)
 -- Kind specifies the category this weapon is in. Players can only carry one of
 -- each. Can be: WEAPON_... MELEE, PISTOL, HEAVY, NADE, CARRY, EQUIP1, EQUIP2 or ROLE.
 -- Matching SWEP.Slot values: 0      1       2     3      4      6       7        8
-SWEP.Kind = WEAPON_HEAVY
+SWEP.Kind = WEAPON_EQUIP1
 
 -- If AutoSpawnable is true and SWEP.Kind is not WEAPON_EQUIP1/2,
 -- then this gun can be spawned as a random weapon.
-SWEP.AutoSpawnable = true
+SWEP.AutoSpawnable = false
 
 -- The AmmoEnt is the ammo entity that can be picked up when carrying this gun.
 SWEP.AmmoEnt = "item_ammo_smg1_ttt"

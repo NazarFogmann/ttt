@@ -403,7 +403,16 @@ function targetid.HUDDrawTargetIDPlayers(tData)
 	if tData:GetEntityDistance() >= 1750 then
 
 		local c_wep = client:GetActiveWeapon()
-		local binoculars_useable = IsValid(c_wep) and c_wep:GetClass() == "weapon_ttt_binoculars" or false
+		local unless = {
+			["weapon_ttt_binoculars"] = true, 
+			["weapon_zm_rifle"] = true, 
+			["weapon_ttt_aug"] = true, 
+			["weapon_ttt_awp"] = true, 
+			["weapon_ttt_g3sg1"] = true, 
+			["weapon_ttt_sg550"] = true, 
+			["weapon_ttt_sg552"] = true, 
+		}
+		local binoculars_useable = IsValid(c_wep) and unless[c_wep:GetClass()]
 
 		if not binoculars_useable then
 			tData:EnableText()

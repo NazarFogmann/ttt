@@ -28,13 +28,14 @@ SWEP.Primary.Ammo = "pistol"
 SWEP.Primary.Delay = 0.114
 SWEP.Primary.Recoil	= 1.36
 SWEP.Primary.Cone = 0.02
-SWEP.Primary.Damage = 18
+SWEP.Primary.Damage = 24
 SWEP.Primary.Automatic = true
 SWEP.Primary.ClipSize = 30
 SWEP.Primary.ClipMax = 60
 SWEP.Primary.DefaultClip = 30
 SWEP.Primary.Sound = Sound("Weapon_M4A1.Silenced")
 SWEP.Secondary.Delay = 0.3
+SWEP.Primary.SoundLevel    = 75
 
 --[[Model settings]]--
 SWEP.HoldType = "ar2"
