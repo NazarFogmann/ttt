@@ -1,10 +1,5 @@
---[[Author informations]]--
-SWEP.Author = "Zaratusa"
-SWEP.Contact = "http://steamcommunity.com/profiles/76561198032479768"
-
 if SERVER then
 	AddCSLuaFile()
-	resource.AddWorkshop("253737433")
 else
 	LANG.AddToLanguage("english", "p90_name", "P90")
 	LANG.AddToLanguage("english", "p90_desc", "Extremely fast firing SMG.\nComes with a mounted scope.")

@@ -1,10 +1,5 @@
---[[Author informations]]--
-SWEP.Author = "Zaratusa"
-SWEP.Contact = "http://steamcommunity.com/profiles/76561198032479768"
-
 if SERVER then
 	AddCSLuaFile()
-	resource.AddWorkshop("253736639")
 else
 	LANG.AddToLanguage("english", "famas_name", "Famas")
 

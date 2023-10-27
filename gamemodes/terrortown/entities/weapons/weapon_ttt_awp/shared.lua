@@ -1,10 +1,5 @@
---[[Author informations]]--
-SWEP.Author = "Zaratusa"
-SWEP.Contact = "http://steamcommunity.com/profiles/76561198032479768"
-
 if SERVER then
 	AddCSLuaFile()
-	resource.AddWorkshop("253736514")
 else
 	LANG.AddToLanguage("english", "awp_name", "AWP")
 	LANG.AddToLanguage("english", "awp_desc", "AWP Sniper Rifle.\n\nOnly has two shots.")
@@ -30,13 +25,13 @@ SWEP.Base = "weapon_tttbase"
 
 --[[Default GMod values]]--
 SWEP.Primary.Ammo = "none"
-SWEP.Primary.Delay = 2
+SWEP.Primary.Delay = 5
 SWEP.Primary.Recoil = 10
 SWEP.Primary.Cone = 0.001
 SWEP.Primary.Damage = 125
 SWEP.Primary.Automatic = false
-SWEP.Primary.ClipSize = 2
-SWEP.Primary.DefaultClip = 2
+SWEP.Primary.ClipSize = 5
+SWEP.Primary.DefaultClip = 5
 SWEP.Primary.Sound = Sound("Weapon_AWP.Single")
 
 SWEP.Secondary.Delay = 0.3

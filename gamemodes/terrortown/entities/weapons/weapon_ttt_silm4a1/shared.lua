@@ -1,10 +1,5 @@
---[[Author informations]]--
-SWEP.Author = "Zaratusa"
-SWEP.Contact = "http://steamcommunity.com/profiles/76561198032479768"
-
 if SERVER then
 	AddCSLuaFile()
-	resource.AddWorkshop("253737867")
 else
 	LANG.AddToLanguage("english", "silenced_m4a1_name", "Silenced M4A1")
 	LANG.AddToLanguage("english", "silenced_m4a1_desc", "A modified M4A1 carbine with a suppressor.\nVictims will not scream when they're killed.")

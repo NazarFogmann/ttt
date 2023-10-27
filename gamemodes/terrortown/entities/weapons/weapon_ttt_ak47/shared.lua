@@ -1,10 +1,5 @@
---[[Author informations]]--
-SWEP.Author = "Zaratusa"
-SWEP.Contact = "http://steamcommunity.com/profiles/76561198032479768"
-
 if SERVER then
 	AddCSLuaFile()
-	resource.AddWorkshop("253736148")
 else
 	LANG.AddToLanguage("english", "ak47_name", "AK47")
 	LANG.AddToLanguage("english", "ak47_desc", "Very high damage assault rifle.\n\nHas very high recoil.")
