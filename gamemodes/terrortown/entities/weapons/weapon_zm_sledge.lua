@@ -41,5 +41,5 @@ SWEP.WorldModel = "models/weapons/w_mach_m249para.mdl"
 
 SWEP.HeadshotMultiplier = 2.2
 
-SWEP.IronSightsPos = Vector(-5.96, -5.119, 2.349)
+SWEP.IronSightsPos = Vector(-5.96, -5.119, 3.149)
 SWEP.IronSightsAng = Vector(0, 0, 0)
