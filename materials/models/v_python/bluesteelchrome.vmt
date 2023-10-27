@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "halflife/black"
+	"$envmap" "models/v_python/bluesteelchrome"
+}
