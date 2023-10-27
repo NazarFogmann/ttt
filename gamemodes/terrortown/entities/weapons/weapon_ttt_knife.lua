@@ -31,7 +31,7 @@ SWEP.UseHands = true
 SWEP.ViewModel = "models/weapons/cstrike/c_knife_t.mdl"
 SWEP.WorldModel = "models/weapons/w_knife_t.mdl"
 
-SWEP.Primary.Damage = 50
+SWEP.Primary.Damage = 60
 SWEP.Primary.ClipSize = -1
 SWEP.Primary.DefaultClip = -1
 SWEP.Primary.Automatic = true
@@ -52,7 +52,7 @@ SWEP.WeaponID = AMMO_KNIFE
 SWEP.IsSilent = true
 
 -- Pull out faster than standard guns
-SWEP.DeploySpeed = 2
+SWEP.DeploySpeed = 2.3
 
 ---
 -- @ignore
@@ -114,8 +114,7 @@ function SWEP:PrimaryAttack()
 		owner:SetAnimation(PLAYER_ATTACK1)
 	end
 
-
-	if SERVER and tr.Hit and tr.HitNonWorld and IsValid(hitEnt) and hitEnt:IsPlayer() then
+	if SERVER and tr.Hit and tr.HitNonWorld and IsValid(hitEnt) and hitEnt:IsPlayer() or ragmod:IsRagmodRagdoll(hitEnt) then
 		-- knife damage is never karma'd, so don't need to take that into
 		-- account we do want to avoid rounding error strangeness caused by
 		-- other damage scaling, causing a death when we don't expect one, so
@@ -237,6 +236,7 @@ function SWEP:StabKill(tr, spos, sdest)
 
 	-- target appears to die right there, so we could theoretically get to
 	-- the ragdoll in here...
+	if CLIENT then return end
 	self:Remove()
 end
 
@@ -277,8 +277,8 @@ function SWEP:SecondaryAttack()
 	local knife_ang = Angle(-28, 0, 0) + ang
 	knife_ang:RotateAroundAxis(knife_ang:Right(), -90)
 
-	local knife = ents.Create("ttt_knife_proj")
-
+	local knife = ents.Create("ifs_knife_proj")
+	print(knife)
 	if not IsValid(knife) then return end
 
 	knife:SetPos(src)
@@ -286,13 +286,13 @@ function SWEP:SecondaryAttack()
 	knife:Spawn()
 	knife:SetOwner(ply)
 
-	knife.Damage = self.Primary.Damage
+	--knife.Damage = self.Primary.Damage
 
 	local phys = knife:GetPhysicsObject()
 
 	if IsValid(phys) then
 		phys:SetVelocity(thr)
-		phys:AddAngleVelocity(Vector(0, 1500, 0))
+		phys:AddAngleVelocity(Vector(0, 1900, 0))
 		phys:Wake()
 	end
 
@@ -345,8 +345,8 @@ if CLIENT then
 		if not IsValid(c_wep) or c_wep:GetClass() ~= "weapon_ttt_knife" or c_wep.Primary.Damage + 10 < ent:Health() then return end
 
 		-- enable targetID rendering
-		tData:EnableOutline()
-		tData:SetOutlineColor(client:GetRoleColor())
+		-- tData:EnableOutline()
+		-- tData:SetOutlineColor(client:GetRoleColor())
 
 		tData:AddDescriptionLine(
 			TryT("knife_instant"),
