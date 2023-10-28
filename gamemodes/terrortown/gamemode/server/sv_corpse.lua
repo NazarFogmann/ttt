@@ -542,23 +542,31 @@ function CORPSE.Create(ply, attacker, dmginfo)
 	local efn = ply.effect_fn
 	ply.effect_fn = nil
 
+	local ragmod_enabled = RagModOptions.Enabled()
 	local rag
-	if ragmod:IsRagdoll(ply) then
-		rag = ragmod:GetRagmodRagdoll(ply)
+	
+	if ragmod_enabled then
+		if ragmod:IsRagdoll(ply) then
+			rag = ragmod:GetRagmodRagdoll(ply)
+		else
+			rag = ragmod:TryToRagdoll(ply)
+		end	
 	else
-		rag = ragmod:TryToRagdoll(ply)
+		rag = ents.Create("prop_ragdoll")
 	end
 
 	if not IsValid(rag) then return end
 
-	-- rag:SetPos(ply:GetPos())
-	-- rag:SetModel(ply:GetModel())
-	-- rag:SetSkin(ply:GetSkin())
-	-- rag:SetAngles(ply:GetAngles())
-	-- rag:SetColor(ply:GetColor())
+	if not ragmod_enabled then
+		rag:SetPos(ply:GetPos())
+		rag:SetModel(ply:GetModel())
+		rag:SetSkin(ply:GetSkin())
+		rag:SetAngles(ply:GetAngles())
+		rag:SetColor(ply:GetColor())
 
-	-- rag:Spawn()
-	-- rag:Activate()
+		rag:Spawn()
+		rag:Activate()
+	end
 
 	-- nonsolid to players, but can be picked up and shot
 	-- rag:SetCollisionGroup(COLLISION_GROUP_WEAPON)
@@ -597,7 +605,7 @@ function CORPSE.Create(ply, attacker, dmginfo)
 	rag.scene = GetSceneData(ply, attacker, dmginfo)
 
 	-- position the bones
-	--local num = (rag:GetPhysicsObjectCount() - 1)
+	local num = (rag:GetPhysicsObjectCount() - 1)
 	local v = ply:GetVelocity()
 
 	-- bullets have a lot of force, which feels better when shooting props,
@@ -608,23 +616,23 @@ function CORPSE.Create(ply, attacker, dmginfo)
 
 	---
 	-- @realm server
-	--hook.Run("TTT2ModifyRagdollVelocity", ply, rag, v)
+	hook.Run("TTT2ModifyRagdollVelocity", ply, rag, v)
 
-	--for i = 0, num do
-	--	local bone = rag:GetPhysicsObjectNum(i)
-	--
-	--	--if IsValid(bone) then
-	--		local bp, ba = ply:GetBonePosition(rag:TranslatePhysBoneToBone(i))
-	--
-	--		if bp and ba then
-	--			bone:SetPos(bp)
-	--			bone:SetAngles(ba)
-	--		end
-	--
-	--		-- not sure if this will work:
-	--		bone:SetVelocity(v)
-	--	end
-	--end
+	for i = 0, num do
+		local bone = rag:GetPhysicsObjectNum(i)
+	
+		if IsValid(bone) then
+			local bp, ba = ply:GetBonePosition(rag:TranslatePhysBoneToBone(i))
+	
+			if not ragmod_enabled and bp and ba then
+				bone:SetPos(bp)
+				bone:SetAngles(ba)
+			end
+	
+			-- not sure if this will work:
+			bone:SetVelocity(v)
+		end
+	end
 
 	-- create advanced death effects (knives)
 	if efn then
