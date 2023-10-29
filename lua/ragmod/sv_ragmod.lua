@@ -230,6 +230,84 @@ local function OnPlayerSpawn(ply, transition)
     end)
 end
 
+local function OnPlayerDeath(ply)
+    local normalDeath = RagModOptions.Misc.NormalDeathRagdolls()
+
+    if not normalDeath then
+        if IsValid(ply:GetRagdollEntity()) then
+            ply:GetRagdollEntity():Remove()
+        end
+    end
+
+    ply.Ragmod_RestoreInventory = false
+
+    -- Player already possessing a ragdoll
+    if ragmod:IsRagdoll(ply) then
+        -- Remove possession
+        local ragdoll = ragmod:GetRagmodRagdoll(ply)
+
+        if RagModOptions.DropWeapons() then
+            ragmod:RestorePlayerInventory(ply)
+
+            for _, wep in ipairs(ply:GetWeapons()) do
+                ply:DropWeapon(wep)
+            end
+        end
+
+        if IsValid(ragdoll) then
+            if normalDeath and IsValid(ply:GetRagdollEntity()) then
+                ply:GetRagdollEntity():Remove()
+            end
+        end
+
+        return
+    end
+
+    if normalDeath then return end
+    -- Player wasn't possessing a ragdoll when dying
+    local ragdoll = ragmod:TryToRagdoll(ply)
+end
+
+local function PlayerLoadout(ply)
+    local stage = RagModOptions.Compatibility.RestoreInventoryStage()
+
+    -- On Loadout
+    if ply.Ragmod_RestoreInventory and stage == "on_loadout" then
+        ragmod:RestorePlayerInventory(ply)
+
+        return true
+    end
+end
+
+-- Sets the initial networked variable states
+local function OnPlayerInitialSpawn(ply, transition)
+    if transition then return end
+    ply:SetNWEntity("ragmod_Possessed", NULL)
+    ply.Ragmod_RestoreInventory = false
+end
+
+local function PlayerSpawn(ply, transition)
+    if transition then return end
+    local stage = RagModOptions.Compatibility.RestoreInventoryStage()
+
+    if ply.Ragmod_PropagateDeath then
+        ply.Ragmod_PropagateDeath = nil
+
+        return true
+    end
+
+    -- Usually happens when player died 
+    if ragmod:IsRagdoll(ply) then
+        ragmod:UnPossessRagdoll(ply, ply.Ragmod_RestoreInventory, false)
+    end
+
+    if ply.Ragmod_RestoreInventory and stage == "on_spawn" then
+        ragmod:RestorePlayerInventory(ply)
+
+        return true
+    end
+end
+
 local function PlayerDisconnected(ply)
     ragmod:LimitPlayerRagdolls(ply, RagModOptions.RagdollLimit())
 end
@@ -433,6 +511,10 @@ local function AddHooks()
     hook.Add("Tick", "ragmod_Tick", Tick)
     hook.Add("PlayerEnteredVehicle", "ragmod_PlayerEnteredVehicle", PlayerEnteredVehicle)
     hook.Add("PlayerLeaveVehicle", "ragmod_PlayerLeaveVehicle", PlayerLeaveVehicle) -- Checks for triggers
+    hook.Add("PostPlayerDeath", "ragmod_PostPlayerDeath", OnPlayerDeath)
+    hook.Add("PlayerLoadout", "ragmod_PlayerLoadout", PlayerLoadout)
+    hook.Add("PlayerSpawn", "ragmod_PlayerSpawnLoadout", PlayerSpawn)
+    hook.Add("PlayerInitialSpawn", "ragmod_PlayerInitialSpawn", OnPlayerInitialSpawn)
 
     for _, ply in ipairs(player.GetAll()) do
         if not ply:InVehicle() then continue end
@@ -448,6 +530,9 @@ local function RemoveHooks()
     hook.Remove("Tick", "ragmod_Tick")
     hook.Remove("PlayerEnteredVehicle", "ragmod_PlayerEnteredVehicle")
     hook.Remove("PlayerLeaveVehicle", "ragmod_PlayerLeaveVehicle")
+    hook.Remove("PlayerLoadout", "ragmod_PlayerLoadout")
+    hook.Remove("PlayerSpawn", "ragmod_PlayerSpawnLoadout")
+    hook.Remove("PlayerInitialSpawn", "ragmod_PlayerInitialSpawn")
 
     for _, ply in ipairs(player.GetAll()) do
         if not ply:InVehicle() then continue end
