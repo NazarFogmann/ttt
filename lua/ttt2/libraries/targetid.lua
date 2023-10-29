@@ -450,7 +450,14 @@ function targetid.HUDDrawTargetIDPlayers(tData)
 	tData:EnableText()
 
 	-- add title and subtitle to the focused ent
-	local h_string, h_color = util.HealthToString(ent:Health(), ent:GetMaxHealth())
+	local health
+	if ragmod:IsRagdoll(ent) then
+		health = ent:GetNWFloat("rm_health", 100)
+	else
+		health = ent:Health()
+	end
+
+	local h_string, h_color = util.HealthToString(health, ent:GetMaxHealth())
 
 	tData:SetTitle(
 		ent:Nick() .. (disguised and (" " .. TryT("target_disg")) or ""),
