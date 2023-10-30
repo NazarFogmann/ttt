@@ -2,7 +2,7 @@ if SERVER then
 	AddCSLuaFile()
 else
 	LANG.AddToLanguage("english", "awp_name", "AWP")
-	LANG.AddToLanguage("english", "awp_desc", "AWP Sniper Rifle.\n\nOnly has two shots.")
+	LANG.AddToLanguage("english", "awp_desc", "AWP Sniper Rifle.\n\nOnly has five shots.")
 
 	SWEP.PrintName = "awp_name"
 	SWEP.Slot = 6
@@ -25,7 +25,7 @@ SWEP.Base = "weapon_tttbase"
 
 --[[Default GMod values]]--
 SWEP.Primary.Ammo = "none"
-SWEP.Primary.Delay = 5
+SWEP.Primary.Delay = 1.3
 SWEP.Primary.Recoil = 10
 SWEP.Primary.Cone = 0.001
 SWEP.Primary.Damage = 125
@@ -34,7 +34,7 @@ SWEP.Primary.ClipSize = 5
 SWEP.Primary.DefaultClip = 5
 SWEP.Primary.Sound = Sound("Weapon_AWP.Single")
 
-SWEP.Secondary.Delay = 0.3
+SWEP.Secondary.Delay = 0.2
 SWEP.Secondary.Sound = Sound("Default.Zoom")
 
 SWEP.HeadshotMultiplier = 6
