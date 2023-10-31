@@ -5,7 +5,7 @@ end
 SWEP.HoldType = "crossbow"
 
 if CLIENT then
-	SWEP.PrintName = "H.U.G.E-249"
+	SWEP.PrintName = "SAW"
 	SWEP.Slot = 2
 
 	SWEP.ViewModelFlip = false

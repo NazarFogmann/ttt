@@ -1,7 +1,7 @@
 if SERVER then
 	AddCSLuaFile()
 else
-	LANG.AddToLanguage("english", "mp5_name", "MP5 navy")
+	LANG.AddToLanguage("english", "mp5_name", "MP5")
 
 	SWEP.PrintName = "mp5_name"
 	SWEP.Slot = 2

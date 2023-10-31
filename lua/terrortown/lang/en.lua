@@ -418,14 +418,14 @@ L.magnet_name = "Magneto-stick"
 L.magnet_help = "{primaryfire} to attach body to surface."
 
 -- Grenades and misc
-L.grenade_smoke = "Smoke grenade"
+L.grenade_smoke = "Smoke Grenade"
 L.grenade_fire = "Molotov Cocktail"
 
 L.unarmed_name = "Holstered"
 L.crowbar_name = "Crowbar"
 L.pistol_name = "Pistol"
-L.rifle_name = "Rifle"
-L.shotgun_name = "Shotgun"
+L.rifle_name = "Scout"
+L.shotgun_name = "Benelli"
 
 -- Teleporter
 L.tele_name = "Teleporter"
