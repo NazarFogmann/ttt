@@ -20,7 +20,7 @@ AddCSLuaFile()
 
 function ENT:Initialize()
     if SERVER then
-        self:SetModel( "models/weapons/w_eq_smokegrenade_thrown.mdl" )
+        self:SetModel( "models/weapons/arccw_go/w_eq_smokegrenade_thrown.mdl" )
         self:SetMoveType( MOVETYPE_NONE )
         self:SetSolid( SOLID_NONE )
         self:DrawShadow( false )

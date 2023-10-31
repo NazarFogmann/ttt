@@ -419,7 +419,7 @@ L.magnet_help = "{primaryfire} to attach body to surface."
 
 -- Grenades and misc
 L.grenade_smoke = "Smoke grenade"
-L.grenade_fire = "Incendiary grenade"
+L.grenade_fire = "Molotov Cocktail"
 
 L.unarmed_name = "Holstered"
 L.crowbar_name = "Crowbar"
