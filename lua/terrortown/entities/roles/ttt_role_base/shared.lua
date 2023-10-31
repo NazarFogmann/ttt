@@ -168,6 +168,8 @@ ROLE.disabledTeamVoice = false
 -- If this is set to true, the given role is unable to hear team voice chat.
 ROLE.disabledTeamVoiceRecv = false
 
+ROLE.isTeamVoiceGlobal = false
+
 ---
 -- This function is called before initializing a @{ROLE}, but after all
 -- global variables like "ROLE_TRAITOR" have been initialized.
