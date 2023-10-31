@@ -1,0 +1,7 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/molly/rag"
+	"$nocull" "1"
+
+	"$bumpmap" "models/molly/rag_bump"
+}

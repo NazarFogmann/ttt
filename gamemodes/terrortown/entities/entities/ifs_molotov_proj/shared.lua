@@ -4,7 +4,7 @@ AddCSLuaFile()
 
 ENT.Type = "anim"
 ENT.Base = "ttt_basegrenade_proj"
-ENT.Model = "models/weapons/arccw_go/w_eq_molotov_thrown.mdl"
+ENT.Model = "models/weapons/anya/w_molly.mdl"
 
 
 AccessorFunc( ENT, "radius", "Radius", FORCE_NUMBER )
@@ -19,7 +19,16 @@ end
 
 function ENT:PhysicsCollide(data, physobj)
     if SERVER then
-        self:Explode(self:GetTouchTrace())
+
+      local trdata = {}
+      trdata.start = data.HitPos
+      trdata.endpos = data.HitPos + data.HitNormal
+      local tr = util.TraceLine(trdata)
+
+      if tr.Hit then
+         self:Explode(tr)
+      end
+
     end
 end
 

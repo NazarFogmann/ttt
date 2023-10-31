@@ -9,7 +9,7 @@ if CLIENT then
 	SWEP.Slot = 3
 
 	SWEP.ViewModelFlip = false
-	SWEP.ViewModelFOV = 60
+	SWEP.ViewModelFOV = 50
 
 	SWEP.Icon = "vgui/ttt/icon_nades"
 	SWEP.IconLetter = "P"
@@ -22,12 +22,29 @@ SWEP.WeaponID = AMMO_MOLOTOV
 SWEP.spawnType = WEAPON_TYPE_NADE
 
 SWEP.UseHands = true
-SWEP.ViewModel = "models/weapons/arccw_go/v_eq_molotov.mdl"
-SWEP.WorldModel = "models/weapons/arccw_go/w_eq_molotov_thrown.mdl"
+SWEP.ViewModel 				= "models/weapons/anya/c_molly.mdl"
+SWEP.WorldModel 			= "models/weapons/anya/w_molly.mdl"
 
 SWEP.Weight = 5
 SWEP.AutoSpawnable = true
 SWEP.Spawnable = true
+
+function SWEP:PullPin()
+	if self:GetPin() then return end
+
+	local ply = self:GetOwner()
+	if not IsValid(ply) then return end
+
+	self:SendWeaponAnim(ACT_VM_PULLBACK_HIGH)
+
+	if self.SetHoldType then
+		self:SetHoldType(self.HoldReady)
+	end
+
+	self:SetPin(true)
+
+	self:SetDetTime(CurTime() + self.detonate_timer)
+end
 
 ---
 -- really the only difference between grenade weapons: the model and the thrown ent.
