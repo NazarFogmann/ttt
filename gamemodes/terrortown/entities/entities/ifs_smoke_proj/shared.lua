@@ -6,7 +6,7 @@ ENT.Information = ""
 ENT.Spawnable = false
 ENT.AdminSpawnable = false
 
-ENT.Model = "models/weapons/w_eq_smokegrenade_thrown.mdl"
+ENT.Model = "models/weapons/arccw_go/w_eq_smokegrenade_thrown.mdl"
 ENT.FuseTime = 3.5
 ENT.ArmTime = 0
 ENT.ImpactFuse = false
