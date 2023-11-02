@@ -13,11 +13,7 @@ SWEP.ViewModelFlip = true
 SWEP.ViewModelFOV                    = 64 
 SWEP.EquipMenuData = {
           type = "item_weapon",
-          desc = [[
-		  Left-Click: Place Tripwire Mine on a wall
-		  
-		  Traitors can pass, Innocents and Detectives
-		  will trigger the mine.]]
+          desc = "Two tripmines to eliminate the inattentive."
        };
      
 SWEP.Icon = "materials/vgui/ttt/icon_tripmine.png"
@@ -88,7 +84,7 @@ function SWEP:TripMineStick()
  
                mine:SetPos(tr_ent.HitPos + (tr_ent.HitNormal * 3))
                mine:SetAngles(ang)
-               mine:SetOwner(ply)
+               --mine:SetOwner(ply)
                mine:Spawn()
  
                                 mine.fingerprints = self.fingerprints
