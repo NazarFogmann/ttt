@@ -34,7 +34,7 @@ if CLIENT then
 end
 
 C4_WIRE_COUNT	= 6
-C4_MINIMUM_TIME = 40
+C4_MINIMUM_TIME = 45
 C4_MAXIMUM_TIME = 600
 
 ENT.Type = "anim"
@@ -125,7 +125,7 @@ function ENT:Initialize()
 	end
 
 	if not self:GetRadius() then
-		self:SetRadius(3000)
+		self:SetRadius(3500)
 	end
 
 	if not self:GetDmg() then
@@ -258,7 +258,7 @@ function ENT:SphereDamage(dmgowner, center, radius)
 		if d >= r then continue end
 
 		-- deadly up to a certain range, then a quick falloff within 100 units
-		d = math.max(0, math.sqrt(d) - 490)
+		d = math.max(0, math.sqrt(d) - 1250)
 		dmg = math.max(0, -0.01 * (d * d) + 125)
 		
 		local dmginfo = DamageInfo()
@@ -312,7 +312,7 @@ function ENT:Explode(tr)
 		local dmgowner = self:GetThrower()
 		dmgowner = IsValid(dmgowner) and dmgowner or self
 
-		local r_inner = 750
+		local r_inner = 1500
 		local r_outer = self:GetRadius()
 
 		if self.DisarmCausedExplosion then
