@@ -8,7 +8,7 @@ if CLIENT then
 	SWEP.PrintName = "grenade_smoke"
 	SWEP.Slot = 3
 
-	SWEP.ViewModelFlip = false
+	SWEP.ViewModelFlip = true
 	SWEP.ViewModelFOV = 60
 
 	SWEP.Icon = "vgui/ttt/icon_nades"
