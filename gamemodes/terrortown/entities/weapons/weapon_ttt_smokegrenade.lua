@@ -9,7 +9,7 @@ if CLIENT then
 	SWEP.Slot = 3
 
 	SWEP.ViewModelFlip = true
-	SWEP.ViewModelFOV = 60
+	SWEP.ViewModelFOV = 54
 
 	SWEP.Icon = "vgui/ttt/icon_nades"
 	SWEP.IconLetter = "Q"

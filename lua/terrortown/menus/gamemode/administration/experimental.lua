@@ -12,9 +12,19 @@ function CLGAMEMODESUBMENU:Populate(parent)
 		label = "help_unique_playermodels"
 	})
 
-	form:MakeCheckBox({
+	local unique_pm = form:MakeCheckBox({
 		serverConvar = "ttt_unique_playermodels",
 		label = "label_unique_playermodels"
+	})
+
+	form:MakeHelp({
+		label = "help_gang_models"
+	})
+
+	form:MakeCheckBox({
+		serverConvar = "ttt2_gang_models",
+		label = "label_gang_models",
+		master = unique_pm
 	})
 
 	form:MakeHelp({
@@ -27,12 +37,12 @@ function CLGAMEMODESUBMENU:Populate(parent)
 	})
 
 	form:MakeHelp({
-		label = "help_gang_models"
+		label = "help_overtime_radar"
 	})
 
 	form:MakeCheckBox({
-		serverConvar = "ttt2_gang_models",
-		label = "label_gang_models"
+		serverConvar = "ttt_overtime_radar",
+		label = "label_overtime_radar"
 	})
 
 end

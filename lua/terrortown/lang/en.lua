@@ -1908,3 +1908,10 @@ L.label_gang_models = "Enable Gang Models"
 
 -- 2023-10-25
 L.too_far_away = "The distance is too great to discern anything specific."
+
+
+-- 2023-11-03
+L.radar_on_overtime = "Every team member has been provided with a radar to proceed with the operation."
+L.credit_on_overtime = "Each team member was provided with a radar, whereas you received {num} equipment credit(s) instead."
+L.help_overtime_radar = "Traitors will receive radar or extra credit on overtime start."
+L.label_overtime_radar = "Enable Overtime Radar"

@@ -204,6 +204,10 @@ local ttt_dbgwin = CreateConVar("ttt_debug_preventwin", "0", {FCVAR_NOTIFY, FCVA
 -- @realm server
 local ttt_newroles_enabled = CreateConVar("ttt_newroles_enabled", "1", {FCVAR_NOTIFY, FCVAR_ARCHIVE})
 
+---
+-- @realm server
+local ttt_overtime_radar = CreateConVar("ttt_overtime_radar", "1", {FCVAR_NOTIFY, FCVAR_ARCHIVE})
+
 -- Pool some network names.
 util.AddNetworkString("TTT_RoundState")
 util.AddNetworkString("TTT_RagdollSearch")
@@ -763,7 +767,13 @@ end
 local function WinChecker()
 	if GetRoundState() ~= ROUND_ACTIVE then return end
 
-	if CurTime() > GetGlobalFloat("ttt_round_end", 0) then
+	round_time = CurTime()
+
+	if ttt_haste:GetBool() and GetGlobalFloat("ttt_haste_end", 0) == round_time then
+		OnOvertimeStart()
+	end
+
+	if round_time > GetGlobalFloat("ttt_round_end", 0) then
 		EndRound(WIN_TIMELIMIT)
 	elseif not ttt_dbgwin:GetBool() then
 		---
@@ -777,6 +787,26 @@ local function WinChecker()
 		if win == WIN_NONE then return end
 
 		EndRound(win)
+	end
+end
+
+function OnOvertimeStart()
+	if not ttt_overtime_radar:GetBool() then return end
+
+	local plys = player.GetAll()
+
+	for i = 1, #plys do
+		local ply = plys[i]
+
+		if ply:IsTerror() and ply:GetTraitor() then
+			if ply:HasEquipmentItem("item_ttt_radar") then
+				LANG.Msg(ply, "credit_on_overtime", {num = 1}, MSG_MSTACK_ROLE)
+				ply:AddCredits(1)
+			else
+				LANG.Msg(ply, "radar_on_overtime", nil, MSG_MSTACK_ROLE)
+				ply:AddEquipmentItem("item_ttt_radar")
+			end
+		end
 	end
 end
 
