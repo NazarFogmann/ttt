@@ -448,11 +448,11 @@ Teleport to a previously marked spot.
 Teleporting makes noise, and the number of uses is limited.]]
 
 -- Ammo names, shown when picked up
-L.ammo_pistol = "9mm ammo"
+L.ammo_pistol = "Parabellum ammo"
 
-L.ammo_smg1 = "SMG ammo"
-L.ammo_buckshot = "Shotgun ammo"
-L.ammo_357 = "Rifle ammo"
+L.ammo_smg1 = "Browning ammo"
+L.ammo_buckshot = "Buckshot ammo"
+L.ammo_357 = "Magnum ammo"
 L.ammo_alyxgun = "Deagle ammo"
 L.ammo_ar2altfire = "Flare ammo"
 L.ammo_gravity = "Poltergeist ammo"

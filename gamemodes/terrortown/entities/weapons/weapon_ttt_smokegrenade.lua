@@ -22,8 +22,8 @@ SWEP.Kind = WEAPON_NADE
 SWEP.spawnType = WEAPON_TYPE_NADE
 
 SWEP.UseHands = true
-SWEP.ViewModel = "models/weapons/arccw_go/v_eq_smokegrenade.mdl"
-SWEP.WorldModel = "models/weapons/arccw_go/w_eq_smokegrenade_thrown.mdl"
+SWEP.ViewModel = "models/weapons/v_eq_smokegrenade.mdl"
+SWEP.WorldModel = "models/weapons/w_eq_smokegrenade_thrown.mdl"
 
 SWEP.Weight = 5
 SWEP.AutoSpawnable = true
