@@ -68,7 +68,7 @@ function SWEP:PrimaryAttack()
 	
 	    vm:SendViewModelMatchingSequence( vm:LookupSequence( anim ) )
 		
-	    self:EmitSound( "items/battery_pickup.wav" )
+	    self:EmitSound( "weapons/plita/plita.wav" )
 		self:SetNextPrimaryFire( CurTime() + self:SequenceDuration() + 99 )
 		self.Owner:SetAnimation( PLAYER_ATTACK1 )
 
