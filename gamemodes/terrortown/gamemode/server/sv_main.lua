@@ -337,6 +337,8 @@ function GM:Initialize()
 	self.AwardedCredits = false
 	self.AwardedCreditsDead = 0
 
+	self.Overtime = false
+
 	self.round_state = ROUND_WAIT
 	self.FirstRound = true
 	self.RoundStartTime = 0
@@ -767,13 +769,7 @@ end
 local function WinChecker()
 	if GetRoundState() ~= ROUND_ACTIVE then return end
 
-	round_time = CurTime()
-
-	if ttt_haste:GetBool() and GetGlobalFloat("ttt_haste_end", 0) == round_time then
-		OnOvertimeStart()
-	end
-
-	if round_time > GetGlobalFloat("ttt_round_end", 0) then
+	if CurTime() > GetGlobalFloat("ttt_round_end", 0) then
 		EndRound(WIN_TIMELIMIT)
 	elseif not ttt_dbgwin:GetBool() then
 		---
@@ -784,8 +780,14 @@ local function WinChecker()
 		-- @realm server
 		win = win or hook.Run("TTTCheckForWin")
 
-		if win == WIN_NONE then return end
-
+		if win == WIN_NONE then 
+			if ttt_haste:GetBool() and not GAMEMODE.Overtime and CurTime() > GetGlobalFloat("ttt_haste_end", 0) then
+				GAMEMODE.Overtime = true
+				OnOvertimeStart()
+			end
+			return 
+		end
+		
 		EndRound(win)
 	end
 end
@@ -1013,6 +1015,8 @@ function PrepareRound()
 	GAMEMODE.MapWin = WIN_NONE
 	GAMEMODE.AwardedCredits = false
 	GAMEMODE.AwardedCreditsDead = 0
+
+	GAMEMODE.Overtime = false
 
 	events.Reset()
 
