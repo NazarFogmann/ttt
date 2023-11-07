@@ -54,19 +54,13 @@ local function PlayerCanHearTeam(listener, speaker, speakerTeam)
 		return false, false
 	end
 
-	local listenerSubRoleData = listener:GetSubRoleData()
-
 	-- Listener checks
-	if listenerSubRoleData.disabledTeamVoiceRecv or not listener:IsActive() or not listener:IsInTeam(speaker) then
+	if listener:GetSubRoleData().disabledTeamVoiceRecv or not listener:IsActive() or not listener:IsInTeam(speaker) then
 		return false, false
 	end
 
 	if TEAMS[speakerTeam].alone then
 		return false, false
-	end
-
-	if listenerSubRoleData.isTeamVoiceGlobal then
-		return true, false
 	end
 
 	return true, loc_voice:GetBool()
@@ -115,11 +109,11 @@ function GM:PlayerCanHearPlayersVoice(listener, speaker)
 	---
 	-- custom post-settings
 	-- @realm server
-	--local can_hear, is_locational = hook.Run("TTT2CanHearVoiceChat", listener, speaker, not isGlobalVoice)
+	local can_hear, is_locational = hook.Run("TTT2CanHearVoiceChat", listener, speaker, not isGlobalVoice)
 
-	--if can_hear ~= nil then
-	--	return can_hear, is_locational or false
-	--end
+	if can_hear ~= nil then
+		return can_hear, is_locational or false
+	end
 
 	if speaker:IsSpec() and isGlobalVoice then
 		-- Check that the speaker was not previously sending voice on the team chat
@@ -140,9 +134,9 @@ end
 -- @return boolean 3D sound. If set to true, will fade out the sound the further away listener is from the talker, the voice will also be in stereo, and not mono
 -- @hook
 -- @realm server
---function GM:TTT2CanHearVoiceChat(listener, speaker, isTeam)
---
---end
+function GM:TTT2CanHearVoiceChat(listener, speaker, isTeam)
+
+end
 
 local function SendRoleVoiceState(speaker)
 	-- send umsg to living traitors that this is traitor-only talk

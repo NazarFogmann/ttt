@@ -24,8 +24,6 @@ function ROLE:PreInitialize()
 
 	self.fallbackTable = {}
 
-	self.isTeamVoiceGlobal = true
-
 	-- conVarData
 	self.conVarData = {
 		pct = 0.4,
