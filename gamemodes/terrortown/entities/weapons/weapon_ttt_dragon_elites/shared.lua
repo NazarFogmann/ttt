@@ -1,11 +1,16 @@
+--[[Author informations]]--
+SWEP.Author = "Zaratusa"
+SWEP.Contact = "http://steamcommunity.com/profiles/76561198032479768"
+
 if SERVER then
 	AddCSLuaFile()
+	resource.AddWorkshop("639762141")
 else
 	LANG.AddToLanguage("english", "dragon_elites_name", "Dragon Elites")
 	LANG.AddToLanguage("english", "dragon_elites_desc", "Dual Dragon Elites,\nwith one additional magazine.\n\nGet the Style.")
 
 	SWEP.PrintName = "dragon_elites_name"
-	SWEP.Slot = 6
+	SWEP.Slot = 1
 	SWEP.Icon = "vgui/ttt/icon_dragon_elites"
 
 	-- client side model settings
@@ -28,8 +33,8 @@ SWEP.Primary.Ammo = "pistol"
 SWEP.Primary.Delay = 0.1
 SWEP.Primary.Recoil = 1.5
 SWEP.Primary.Cone = 0.025
-SWEP.Primary.Damage = 28
-SWEP.Primary.Automatic = true
+SWEP.Primary.Damage = 22
+SWEP.Primary.Automatic = false
 SWEP.Primary.ClipSize = 30
 SWEP.Primary.ClipMax = 60
 SWEP.Primary.DefaultClip = 30
@@ -47,7 +52,7 @@ SWEP.WorldModel = Model("models/weapons/zaratusa/dragon_elites/w_dragon_elites.m
 -- Kind specifies the category this weapon is in. Players can only carry one of
 -- each. Can be: WEAPON_... MELEE, PISTOL, HEAVY, NADE, CARRY, EQUIP1, EQUIP2 or ROLE.
 -- Matching SWEP.Slot values: 0      1       2     3      4      6       7        8
-SWEP.Kind = WEAPON_EQUIP1
+SWEP.Kind = WEAPON_PISTOL
 
 -- If AutoSpawnable is true and SWEP.Kind is not WEAPON_EQUIP1/2,
 -- then this gun can be spawned as a random weapon.
