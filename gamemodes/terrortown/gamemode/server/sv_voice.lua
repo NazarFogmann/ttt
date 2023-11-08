@@ -135,7 +135,9 @@ end
 -- @hook
 -- @realm server
 function GM:TTT2CanHearVoiceChat(listener, speaker, isTeam)
-
+	if listener:GetTraitor() and speaker:GetTraitor() then
+		return true, false
+	end
 end
 
 local function SendRoleVoiceState(speaker)
