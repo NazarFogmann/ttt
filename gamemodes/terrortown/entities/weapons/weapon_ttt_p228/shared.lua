@@ -1,7 +1,7 @@
 if SERVER then
 	AddCSLuaFile()
 else
-	LANG.AddToLanguage("english", "p228_name", "P228")
+	LANG.AddToLanguage("english", "p228_name", "SIG Sauer")
 
 	SWEP.PrintName = "p228_name"
 	SWEP.Slot = 1
@@ -22,7 +22,7 @@ SWEP.Primary.Delay = 0.25
 SWEP.Primary.Recoil	= 0.9
 SWEP.Primary.Cone = 0.028
 SWEP.Primary.Damage = 18
-SWEP.Primary.Automatic = false
+SWEP.Primary.Automatic = true
 SWEP.Primary.ClipSize = 20
 SWEP.Primary.ClipMax = 60
 SWEP.Primary.DefaultClip = 20

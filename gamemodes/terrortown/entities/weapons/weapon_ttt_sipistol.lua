@@ -20,17 +20,17 @@ end
 
 SWEP.Base                  = "weapon_tttbase"
 
-SWEP.Primary.Recoil        = 0.85
-SWEP.Primary.Damage        = 29
-SWEP.Primary.Delay         = 0.38
-SWEP.Primary.Cone          = 0.02
+SWEP.Primary.Recoil        = 0.55
+SWEP.Primary.Damage        = 33
+SWEP.Primary.Delay         = 0.28
+SWEP.Primary.Cone          = 0.012
 SWEP.Primary.ClipSize      = 20
 SWEP.Primary.Automatic     = true
 SWEP.Primary.DefaultClip   = 20
 SWEP.Primary.ClipMax       = 60
 SWEP.Primary.Ammo          = "Pistol"
 SWEP.Primary.Sound         = Sound( "Weapon_USP.SilencedShot" )
-SWEP.Primary.SoundLevel    = 25
+SWEP.Primary.SoundLevel    = 5
 
 SWEP.HeadshotMultiplier = 3.5
 

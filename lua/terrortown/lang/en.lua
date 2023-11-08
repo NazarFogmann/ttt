@@ -367,7 +367,7 @@ Plays sounds to distract or deceive.
 Place the radio somewhere, and then play sounds on it using the Radio tab in this menu.]]
 
 -- Silenced pistol
-L.sipistol_name = "Silenced Pistol"
+L.sipistol_name = "USP-S"
 
 L.sipistol_desc = [[
 Low-noise handgun, uses normal pistol ammo.
@@ -423,7 +423,7 @@ L.grenade_fire = "Molotov Cocktail"
 
 L.unarmed_name = "Holstered"
 L.crowbar_name = "Crowbar"
-L.pistol_name = "Pistol"
+L.pistol_name = "Five-Seven"
 L.rifle_name = "Scout"
 L.shotgun_name = "Benelli"
 
