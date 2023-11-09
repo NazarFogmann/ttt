@@ -107,9 +107,10 @@ function UpdateSprint()
 		if not ply:OnGround() then continue end
 
 		local wantsToMove = ply:KeyDown(IN_FORWARD) or ply:KeyDown(IN_BACK) or ply:KeyDown(IN_MOVERIGHT) or ply:KeyDown(IN_MOVELEFT)
+		local stamina = ply:GetStamina()
 
-		if ply.sprintProgress == 1 and (not ply.isSprinting or not wantsToMove) then continue end
-		if ply.sprintProgress == 0 and ply.isSprinting and wantsToMove then
+		if stamina == 1 and (not stamina or not wantsToMove) then continue end
+		if stamina == 0 and stamina and wantsToMove then
 			ply.sprintResetDelayCounter = ply.sprintResetDelayCounter + FrameTime()
 
 			-- If the player keeps sprinting even though they have no stamina, start refreshing stamina after 1.5 seconds automatically
@@ -123,20 +124,24 @@ function UpdateSprint()
 		ply.sprintResetDelayCounter = 0
 
 		local modifier = {1} -- Multiple hooking support
+		local newStamina = 0
 
 		if not ply.isSprinting or not wantsToMove then
 			---
 			-- @realm shared
 			hook.Run("TTT2StaminaRegen", ply, modifier)
 
-			ply.sprintProgress = math.Clamp(ply.sprintProgress + FrameTime() * modifier[1] * GetGlobalFloat("ttt2_sprint_stamina_regeneration"), 0, math.max(0, math.min(ply:Health() / 100, 1.0 - ply:GetNWInt("EffectAMT"))))
+			newStamina = math.Clamp(stamina + FrameTime() * modifier[1] * GetGlobalFloat("ttt2_sprint_stamina_regeneration"), 0, math.max(0, math.min(ply:Health() / 100, 1.0 - ply:GetNWInt("EffectAMT"))))
 		elseif wantsToMove then
 			---
 			-- @realm shared
 			hook.Run("TTT2StaminaDrain", ply, modifier)
 
-			ply.sprintProgress = math.max(ply.sprintProgress - FrameTime() * modifier[1] * GetGlobalFloat("ttt2_sprint_stamina_consumption"), 0)
+			newStamina = math.max(stamina - FrameTime() * modifier[1] * GetGlobalFloat("ttt2_sprint_stamina_consumption"), 0)
 		end
+
+		ply:SetStamina(newStamina)
+
 	end
 end
 
@@ -161,17 +166,3 @@ end
 function GM:TTT2StaminaDrain(ply, modifierTbl)
 
 end
-
-hook.Add("SetupMove", "Nerf Jump", function(ply, mv)
-
-	if CLIENT then
-		client = LocalPlayer()
-
-		if not IsValid(client) then return end
-	end
-
-	if ply:OnGround() and mv:KeyPressed(IN_JUMP) then
-		ply:SetJumpPower(160 * ply.sprintProgress)
-		ply.sprintProgress = math.max(ply.sprintProgress - 0.2, 0)
-	end
-end)

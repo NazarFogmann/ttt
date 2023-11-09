@@ -579,7 +579,7 @@ function SWEP:PrimaryAttack(worldsnd)
 
 	local staminaTax = self:GetIronsights() and (self.StaminaLoss * 0.65) or self.StaminaLoss
 
-	owner.sprintProgress = math.max(owner.sprintProgress - staminaTax, 0)
+	owner:SetStamina(math.max(owner:GetStamina() - staminaTax, 0))
 end
 
 ---
@@ -697,7 +697,7 @@ function SWEP:GetPrimaryCone()
 	local owner = self:GetOwner()
 
 	if IsValid(owner) then
-		cone = cone + (1.0 - owner.sprintProgress) * 3 * cone
+		cone = cone + (1.0 - owner:GetStamina()) * 3 * cone
 	end
 
 	-- 10% accuracy bonus when sighting

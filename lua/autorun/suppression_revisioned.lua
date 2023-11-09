@@ -22,7 +22,7 @@ local suppression_enable_vehicle = true
 function ApplySuppressionEffect(at, hit, start)
 	bruh = start or at:EyePos()
 	bruhh = hit
-	for _,v in pairs(player.GetAll()) do
+	for _,v in ipairs(player.GetAll()) do
 		local distance, sup_point = util.DistanceToLine( bruh, bruhh, v:GetPos() )
 		if v:IsPlayer() and v:Alive() and (suppression_enabled:GetBool()) and distance < 100 and !(v == at) then
 			if (v:InVehicle() and !suppression_enable_vehicle) then return end
@@ -47,6 +47,9 @@ function ApplySuppressionEffect(at, hit, start)
 	end --end for
 end -- end function
 hook.Add("EntityFireBullets", "SupperssionFunc", function(at, bul)
+
+	if GetRoundState() ~= ROUND_ACTIVE then return end
+
 	local oldcb = bul.Callback
 	bul.Callback = function( at, tr, dm)
 		if oldcb then 
