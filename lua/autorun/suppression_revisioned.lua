@@ -4,7 +4,7 @@ I chagned the effect and the way it works with the addition of the sound from in
 okay bye now 
 -kait
 ]]
-local suppression_enabled = true
+local suppression_enabled = CreateConVar("ttt_suppression", "1", {FCVAR_NOTIFY, FCVAR_ARCHIVE})
 
 local suppression_viewpunch = true
 local suppression_viewpunch_intensity = 3
@@ -24,7 +24,7 @@ function ApplySuppressionEffect(at, hit, start)
 	bruhh = hit
 	for _,v in pairs(player.GetAll()) do
 		local distance, sup_point = util.DistanceToLine( bruh, bruhh, v:GetPos() )
-		if v:IsPlayer() and v:Alive() and (suppression_enabled) and distance < 100 and !(v == at) then
+		if v:IsPlayer() and v:Alive() and (suppression_enabled:GetBool()) and distance < 100 and !(v == at) then
 			if (v:InVehicle() and !suppression_enable_vehicle) then return end
 			v:SetNWInt("EffectAMT", math.Clamp(v:GetNWInt("EffectAMT"), 0, 1) + 0.05 * (suppression_buildupspeed))
 			sound.Play("bul_snap/supersonic_snap_" .. math.random(1,18) .. ".wav", sup_point, 75, 100, 1)

@@ -79,48 +79,7 @@ if SERVER then
 		ply.sprintMultiplier = bool and (1 + maxSprintMul:GetFloat()) or nil
 		ply.isSprinting = bool
 	end)
-else -- CLIENT
-	---
-	-- @realm client
-	local enable_doubletap_sprint = CreateConVar("ttt2_enable_doubletap_sprint", "1", {FCVAR_ARCHIVE})
-
-	---
-	-- @realm client
-	local doubletap_sprint_anykey = CreateConVar("ttt2_doubletap_sprint_anykey", "1", {FCVAR_ARCHIVE})
-
-	local lastPress = 0
-	local lastPressedMoveKey = nil
-
-	---
-	-- @param Player ply
-	-- @param number key
-	-- @param boolean pressed
-	-- @realm client
-	function UpdateInputSprint(ply, key, pressed)
-		if pressed then
-			if ply.isSprinting or not enable_doubletap_sprint:GetBool() or ply.preventSprint then return end
-
-			local time = CurTime()
-
-			if lastPressedMoveKey == key and time - lastPress < 0.4 then
-				PlayerSprint(true, key)
-			end
-
-			lastPressedMoveKey = key
-			lastPress = time
-		else
-			if not ply.isSprinting then return end
-
-			local moveKey = ply.moveKey
-			local wantsToMove = ply:KeyDown(IN_FORWARD) or ply:KeyDown(IN_BACK) or ply:KeyDown(IN_MOVERIGHT) or ply:KeyDown(IN_MOVELEFT)
-			local anyKey = doubletap_sprint_anykey:GetBool()
-
-			if not moveKey or anyKey and wantsToMove or not anyKey and key ~= moveKey then return end
-
-			PlayerSprint(false, key)
-		end
-	end
-
+else 
 	bind.Register("ttt2_sprint", function()
 		if not LocalPlayer().preventSprint then
 			PlayerSprint(true)
@@ -172,7 +131,7 @@ function UpdateSprint()
 			-- @realm shared
 			hook.Run("TTT2StaminaRegen", ply, modifier)
 
-			ply.sprintProgress = math.Clamp((ply.oldSprintProgress or 0) + FrameTime() * modifier[1] * GetGlobalFloat("ttt2_sprint_stamina_regeneration"), 0, ply:Health() / 100) 
+			ply.sprintProgress = math.Clamp((ply.oldSprintProgress or 0) + FrameTime() * modifier[1] * GetGlobalFloat("ttt2_sprint_stamina_regeneration"), 0, math.min(ply:Health() / 100, 1.0 - ply:GetNWInt("EffectAMT"))) 
 			ply.oldSprintProgress = ply.sprintProgress
 		elseif wantsToMove then
 			---

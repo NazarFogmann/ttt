@@ -45,4 +45,15 @@ function CLGAMEMODESUBMENU:Populate(parent)
 		label = "label_overtime_radar"
 	})
 
+	local tarkov = vgui.CreateTTT2Form(parent, "header_tarkov")
+
+	tarkov:MakeHelp({
+		label = "help_suppression"
+	})
+
+	tarkov:MakeCheckBox({
+		serverConvar = "ttt_suppression",
+		label = "label_suppression"
+	})
+
 end
