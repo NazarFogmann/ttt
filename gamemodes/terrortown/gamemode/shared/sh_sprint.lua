@@ -7,7 +7,6 @@ local function PlayerSprint(trySprinting, moveKey)
 	if not trySprinting and not client.isSprinting or trySprinting and client.isSprinting then return end
 	if client.isSprinting and (client.moveKey and not moveKey or not client.moveKey and moveKey) then return end
 
-	client.oldSprintProgress = client.sprintProgress
 	client.sprintMultiplier = trySprinting and (1 + GetGlobalFloat("ttt2_sprint_max", 0)) or nil
 	client.isSprinting = trySprinting
 	client.moveKey = moveKey
@@ -75,7 +74,6 @@ if SERVER then
 
 		local bool = net.ReadBool()
 
-		ply.oldSprintProgress = ply.sprintProgress
 		ply.sprintMultiplier = bool and (1 + maxSprintMul:GetFloat()) or nil
 		ply.isSprinting = bool
 	end)
@@ -131,15 +129,13 @@ function UpdateSprint()
 			-- @realm shared
 			hook.Run("TTT2StaminaRegen", ply, modifier)
 
-			ply.sprintProgress = math.Clamp((ply.oldSprintProgress or 0) + FrameTime() * modifier[1] * GetGlobalFloat("ttt2_sprint_stamina_regeneration"), 0, math.min(ply:Health() / 100, 1.0 - ply:GetNWInt("EffectAMT"))) 
-			ply.oldSprintProgress = ply.sprintProgress
+			ply.sprintProgress = math.Clamp(ply.sprintProgress + FrameTime() * modifier[1] * GetGlobalFloat("ttt2_sprint_stamina_regeneration"), 0, math.max(0, math.min(ply:Health() / 100, 1.0 - ply:GetNWInt("EffectAMT"))))
 		elseif wantsToMove then
 			---
 			-- @realm shared
 			hook.Run("TTT2StaminaDrain", ply, modifier)
 
-			ply.sprintProgress = math.max((ply.oldSprintProgress or 0) - FrameTime() * modifier[1] * GetGlobalFloat("ttt2_sprint_stamina_consumption"), 0)
-			ply.oldSprintProgress = ply.sprintProgress
+			ply.sprintProgress = math.max(ply.sprintProgress - FrameTime() * modifier[1] * GetGlobalFloat("ttt2_sprint_stamina_consumption"), 0)
 		end
 	end
 end
@@ -177,6 +173,5 @@ hook.Add("SetupMove", "Nerf Jump", function(ply, mv)
 	if ply:OnGround() and mv:KeyPressed(IN_JUMP) then
 		ply:SetJumpPower(160 * ply.sprintProgress)
 		ply.sprintProgress = math.max(ply.sprintProgress - 0.2, 0)
-		ply.oldSprintProgress = ply.sprintProgress
 	end
 end)

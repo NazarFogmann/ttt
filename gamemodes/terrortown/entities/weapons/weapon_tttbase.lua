@@ -580,7 +580,6 @@ function SWEP:PrimaryAttack(worldsnd)
 	local staminaTax = self:GetIronsights() and (self.StaminaLoss * 0.65) or self.StaminaLoss
 
 	owner.sprintProgress = math.max(owner.sprintProgress - staminaTax, 0)
-	owner.oldSprintProgress = owner.sprintProgress
 end
 
 ---
