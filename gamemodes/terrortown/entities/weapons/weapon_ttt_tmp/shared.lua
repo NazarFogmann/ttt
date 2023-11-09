@@ -59,3 +59,5 @@ SWEP.IsSilent = true
 
 -- If NoSights is true, the weapon won't have ironsights
 SWEP.NoSights = false
+
+SWEP.StaminaLoss = 0.01

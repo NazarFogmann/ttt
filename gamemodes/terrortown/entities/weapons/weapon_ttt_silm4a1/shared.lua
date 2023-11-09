@@ -79,6 +79,8 @@ SWEP.IsSilent = true
 -- If NoSights is true, the weapon won't have ironsights
 SWEP.NoSights = false
 
+SWEP.StaminaLoss = 0.03
+
 -- add some zoom to the scope for this gun
 function SWEP:SecondaryAttack()
 	if (self.IronSightsPos and self:GetNextSecondaryFire() <= CurTime()) then

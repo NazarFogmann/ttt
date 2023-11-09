@@ -47,6 +47,8 @@ SWEP.WorldModel = Model("models/weapons/w_snip_scout.mdl")
 SWEP.IronSightsPos = Vector(5, -15, -2)
 SWEP.IronSightsAng = Vector(2.6, 1.37, 3.5)
 
+SWEP.StaminaLoss = 0.5
+
 ---
 -- @ignore
 function SWEP:SetZoom(state)

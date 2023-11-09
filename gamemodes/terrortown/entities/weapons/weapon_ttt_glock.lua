@@ -43,3 +43,5 @@ SWEP.ViewModel = "models/weapons/cstrike/c_pist_glock18.mdl"
 SWEP.WorldModel = "models/weapons/w_pist_glock18.mdl"
 
 SWEP.IronSightsPos = Vector(-5.79, -3.9982, 2.8289)
+
+SWEP.StaminaLoss = 0.02

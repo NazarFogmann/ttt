@@ -47,6 +47,8 @@ SWEP.WorldModel = Model("models/weapons/w_snip_awp.mdl")
 SWEP.IronSightsPos = Vector(5, -15, -2)
 SWEP.IronSightsAng = Vector(2.6, 1.37, 3.5)
 
+SWEP.StaminaLoss = 0.8
+
 --[[TTT config values]]--
 
 -- Kind specifies the category this weapon is in. Players can only carry one of
