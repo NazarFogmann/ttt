@@ -577,7 +577,9 @@ function SWEP:PrimaryAttack(worldsnd)
 
 	owner:ViewPunch(Angle(util.SharedRandom(self:GetClass(), -0.2, -0.1, 0) * self.Primary.Recoil, util.SharedRandom(self:GetClass(), -0.1, 0.1, 1) * self.Primary.Recoil, 0))
 
-	owner.sprintProgress = math.max(owner.sprintProgress - self.StaminaLoss, 0)
+	local staminaTax = self:GetIronsights() and (self.StaminaLoss * 0.65) or self.StaminaLoss
+
+	owner.sprintProgress = math.max(owner.sprintProgress - staminaTax, 0)
 	owner.oldSprintProgress = owner.sprintProgress
 end
 
@@ -693,11 +695,14 @@ end
 -- @realm shared
 function SWEP:GetPrimaryCone()
 	local cone = self.Primary.Cone or 0.2
+	local owner = self:GetOwner()
 
-	cone = cone + (1.0 - self:GetOwner().sprintProgress) * 3 * cone
+	if IsValid(owner) then
+		cone = cone + (1.0 - owner.sprintProgress) * 3 * cone
+	end
 
 	-- 10% accuracy bonus when sighting
-	return self:GetIronsights() and (cone * 0.85) or cone
+	return self:GetIronsights() and (cone * 0.75) or cone
 end
 
 ---
