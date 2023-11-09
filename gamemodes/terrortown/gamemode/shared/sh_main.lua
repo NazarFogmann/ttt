@@ -241,7 +241,7 @@ end
 function GM:Move(ply, moveData)
 	SPEED:HandleSpeedCalculation(ply, moveData)
 
-	local staminaFactor = math.Clamp(ply.sprintProgress + 0.5, 0.5, 1.0)
+	local staminaFactor = math.Clamp(ply.sprintProgress, 0.45, 1.0)
 	local mul = ply:GetSpeedMultiplier() * staminaFactor
 
 	if ply.sprintMultiplier and (ply.sprintProgress or 0) > 0 then
