@@ -172,7 +172,7 @@ function UpdateSprint()
 			-- @realm shared
 			hook.Run("TTT2StaminaRegen", ply, modifier)
 
-			ply.sprintProgress = math.min((ply.oldSprintProgress or 0) + FrameTime() * modifier[1] * GetGlobalFloat("ttt2_sprint_stamina_regeneration"), 1)
+			ply.sprintProgress = math.Clamp((ply.oldSprintProgress or 0) + FrameTime() * modifier[1] * GetGlobalFloat("ttt2_sprint_stamina_regeneration"), 0, ply:Health() / 100) 
 			ply.oldSprintProgress = ply.sprintProgress
 		elseif wantsToMove then
 			---
@@ -206,3 +206,18 @@ end
 function GM:TTT2StaminaDrain(ply, modifierTbl)
 
 end
+
+hook.Add("SetupMove", "Nerf Jump", function(ply, mv)
+
+	if CLIENT then
+		client = LocalPlayer()
+
+		if not IsValid(client) then return end
+	end
+
+	if ply:OnGround() and mv:KeyPressed(IN_JUMP) then
+		ply:SetJumpPower(160 * ply.sprintProgress)
+		ply.sprintProgress = math.max(ply.sprintProgress - 0.2, 0)
+		ply.oldSprintProgress = ply.sprintProgress
+	end
+end)

@@ -161,6 +161,8 @@ SWEP.ReloadAnim = ACT_VM_RELOAD
 
 SWEP.fingerprints = {}
 
+SWEP.StaminaLoss = 0.05
+
 --[[
 	-- The position offset applied when entering the ironsight
 	SWEP.IronSightsPos = Vector(0, 0, 0)
@@ -574,6 +576,9 @@ function SWEP:PrimaryAttack(worldsnd)
 	if not IsValid(owner) or owner:IsNPC() or not owner.ViewPunch then return end
 
 	owner:ViewPunch(Angle(util.SharedRandom(self:GetClass(), -0.2, -0.1, 0) * self.Primary.Recoil, util.SharedRandom(self:GetClass(), -0.1, 0.1, 1) * self.Primary.Recoil, 0))
+
+	owner.sprintProgress = math.max(owner.sprintProgress - self.StaminaLoss, 0)
+	owner.oldSprintProgress = owner.sprintProgress
 end
 
 ---
@@ -688,6 +693,8 @@ end
 -- @realm shared
 function SWEP:GetPrimaryCone()
 	local cone = self.Primary.Cone or 0.2
+
+	cone = cone + (1.0 - self:GetOwner().sprintProgress) * 3 * cone
 
 	-- 10% accuracy bonus when sighting
 	return self:GetIronsights() and (cone * 0.85) or cone
