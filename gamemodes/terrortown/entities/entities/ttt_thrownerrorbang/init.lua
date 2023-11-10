@@ -58,6 +58,7 @@ function ENT:Explode()
 				pl:SetNetworkedFloat("RCS_flashed_time", endtime + CurTime());
 			end
 			pl:SetNetworkedFloat("RCS_flashed_time_start", CurTime());
+			pl:SetStamina(0)
 		end
 	end
 	self.Entity:Remove();

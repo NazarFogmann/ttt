@@ -5,12 +5,12 @@ if SERVER then --the init.lua stuff goes in here
 end
 
 if CLIENT then --the init.lua stuff goes in here
-	SWEP.PrintName = "Error-Flashbang"
+	SWEP.PrintName = "Flashbang"
 	SWEP.SlotPos = 2
 
 	SWEP.EquipMenuData = {
 	   type = "item_weapon",
-	   desc = "Throw some errors at your opponents!"
+	   desc = "Throw some flashy at your opponents!"
    };
 end
 

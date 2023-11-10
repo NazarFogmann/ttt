@@ -1,5 +1,5 @@
 local effectLength = 1.5; --time in seconds, for the grenade to transition from full white to clear
-local effectDelay = 0.5; --time, in seconds when the effects still are going on, even when the whiteness of the flash is gone (set to -1 for no effects at all =]).
+local effectDelay = 4.5; --time, in seconds when the effects still are going on, even when the whiteness of the flash is gone (set to -1 for no effects at all =]).
 local pos, endflash, endflash2;
 local last = nil
 local selected = nil
