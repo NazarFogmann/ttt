@@ -47,7 +47,7 @@ SWEP.WorldModel = Model("models/weapons/w_snip_awp.mdl")
 SWEP.IronSightsPos = Vector(5, -15, -2)
 SWEP.IronSightsAng = Vector(2.6, 1.37, 3.5)
 
-SWEP.StaminaLoss = 0.8
+SWEP.StaminaLoss = 0.75
 
 --[[TTT config values]]--
 

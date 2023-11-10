@@ -43,6 +43,8 @@ SWEP.WorldModel = Model("models/weapons/w_rif_ak47.mdl")
 SWEP.IronSightsPos = Vector(-6.56, -11, 2.4)
 SWEP.IronSightsAng = Vector(2.4, 0, 0)
 
+SWEP.StaminaLoss = 0.04
+
 --[[TTT config values]]--
 
 -- Kind specifies the category this weapon is in. Players can only carry one of
