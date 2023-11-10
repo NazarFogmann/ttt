@@ -162,6 +162,7 @@ SWEP.ReloadAnim = ACT_VM_RELOAD
 SWEP.fingerprints = {}
 
 SWEP.StaminaLoss = 0.05
+SWEP.StaminaCone = 3
 
 --[[
 	-- The position offset applied when entering the ironsight
@@ -704,7 +705,7 @@ function SWEP:GetPrimaryCone()
 	local owner = self:GetOwner()
 
 	if IsValid(owner) then
-		cone = cone + (1.0 - owner:GetStamina()) * 3 * cone
+		cone = cone + (1.0 - owner:GetStamina()) * self.StaminaCone * cone
 	end
 
 	-- 10% accuracy bonus when sighting
