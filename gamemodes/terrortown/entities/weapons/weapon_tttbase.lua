@@ -577,9 +577,11 @@ function SWEP:PrimaryAttack(worldsnd)
 
 	owner:ViewPunch(Angle(util.SharedRandom(self:GetClass(), -0.2, -0.1, 0) * self.Primary.Recoil, util.SharedRandom(self:GetClass(), -0.1, 0.1, 1) * self.Primary.Recoil, 0))
 
-	local staminaTax = self:GetIronsights() and (self.StaminaLoss * 0.65) or self.StaminaLoss
-
-	owner:SetStamina(math.max(owner:GetStamina() - staminaTax, 0))
+	if SERVER then
+		local staminaTax = self:GetIronsights() and (self.StaminaLoss * 0.65) or self.StaminaLoss
+		owner:SetStamina(math.max(owner:GetStamina() - staminaTax, 0))
+	end
+	
 end
 
 ---

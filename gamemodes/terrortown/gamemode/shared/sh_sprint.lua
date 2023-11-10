@@ -123,6 +123,8 @@ function UpdateSprint()
 
 		ply.sprintResetDelayCounter = 0
 
+		if CLIENT then return end
+
 		local modifier = {1} -- Multiple hooking support
 		local newStamina = 0
 
@@ -166,3 +168,28 @@ end
 function GM:TTT2StaminaDrain(ply, modifierTbl)
 
 end
+
+local CMoveData = FindMetaTable("CMoveData")
+
+function CMoveData:RemoveKeys(keys)
+    local newbuttons = bit.band(self:GetButtons(), bit.bnot(keys))
+    self:SetButtons(newbuttons)
+end
+
+hook.Add("SetupMove", "Nerf Jump", function(ply, mv)
+    if ply:OnGround() and mv:KeyPressed(IN_JUMP) then
+
+		local stamina = ply:GetStamina()
+
+		if stamina < 0.25 then
+			mv:RemoveKeys(IN_JUMP)
+			return
+		end
+
+        ply:SetJumpPower(math.max(120, 160 * stamina))
+
+		if SERVER then
+			ply:SetStamina(math.max(stamina - 0.2, 0))
+		end
+	end
+end)
