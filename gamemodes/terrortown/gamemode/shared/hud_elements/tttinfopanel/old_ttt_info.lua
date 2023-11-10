@@ -119,7 +119,7 @@ if CLIENT then
 			-- sprint bar
 			local sbh = 8 -- spring bar height
 
-			if GetGlobalBool("ttt2_sprint_enabled", true) then
+			if SPRINT.convars.enabled:GetBool() then
 				self:PaintBar(x + margin, ammo_y + bar_height + 5, bar_width, sbh, self.sprint_colors, client:GetStamina())
 			end
 

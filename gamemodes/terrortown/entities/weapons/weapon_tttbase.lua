@@ -304,7 +304,12 @@ if CLIENT then
 
 		local client = LocalPlayer()
 
-		if not enable_crosshair:GetBool() or not IsValid(client) or client.isSprinting and not GetGlobalBool("ttt2_sprint_crosshair", false) then return end
+		if
+			not enable_crosshair:GetBool()
+			or SPRINT:IsSprinting(client) and not SPRINT.convars.showCrosshair:GetBool()
+		then
+			return
+		end
 
 		local sights = not self.NoSights and self:GetIronsights()
 		local x = math.floor(ScrW() * 0.5)

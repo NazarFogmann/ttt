@@ -4,7 +4,6 @@
 local IsValid = IsValid
 local hook = hook
 local team = team
-local UpdateSprint = UpdateSprint
 
 local MAX_DROWN_TIME = 8
 
@@ -243,20 +242,14 @@ function GM:Move(ply, moveData)
 
 	local stamina = ply:GetStamina()
 	local staminaFactor = math.Clamp(stamina + 0.45, 0.45, 1.0)
-	local mul = ply:GetSpeedMultiplier() * staminaFactor
-
-	if ply.sprintMultiplier and (stamina or 0) > 0 then
-		local sprintMultiplierModifier = {1}
-
-		---
-		-- @realm shared
-		hook.Run("TTT2PlayerSprintMultiplier", ply, sprintMultiplierModifier)
-
-		mul = mul * ply.sprintMultiplier * sprintMultiplierModifier[1]
-	end
+	local mul = ply:GetSpeedMultiplier() * staminaFactor * SPRINT:HandleSpeedMultiplierCalculation(ply)
 
 	moveData:SetMaxClientSpeed(moveData:GetMaxClientSpeed() * mul)
 	moveData:SetMaxSpeed(moveData:GetMaxSpeed() * mul)
+end
+
+function GM:FinishMove(ply, moveData)
+	SPRINT:HandleStaminaCalculation(ply)
 end
 
 local ttt_playercolors = {
@@ -320,8 +313,7 @@ end
 -- @realm shared
 -- @ref https://wiki.facepunch.com/gmod/GM:Think
 function GM:Think()
-	UpdateSprint()
-
+	
 	if CLIENT then
 		EPOP:Think()
 	end
