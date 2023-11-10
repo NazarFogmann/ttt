@@ -431,6 +431,22 @@ function targetid.HUDDrawTargetIDPlayers(tData)
 
 	end
 
+	-- stamina nerfocirc
+	if client:GetStamina() < 0.07 then
+		tData:EnableText()
+		tData:SetTitle(
+			TryT("target_unknown"),
+			nil,
+			nil
+		)
+		tData:SetSubtitle(TryT("too_low_stamina"))
+		tData:AddIcon(
+			materialRoleUnknown,
+			COLOR_SLATEGRAY
+		)
+		return
+	end
+
 	-- show the role of a player if it is known to the client
 	local rstate = GetRoundState()
 	local target_role

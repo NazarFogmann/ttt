@@ -1920,3 +1920,6 @@ L.label_overtime_radar = "Enable Overtime Radar"
 L.header_tarkov = "Escape from Kharkov"
 L.help_suppression = "Projectiles will begin to suppress players, reducing their will to fight, stamina and fps."
 L.label_suppression = "Enable Suppression"
+
+-- 2023-11-10
+L.too_low_stamina = "I don't have enough stamina to discern anything specific."
