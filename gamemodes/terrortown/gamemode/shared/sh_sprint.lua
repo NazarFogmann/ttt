@@ -64,15 +64,15 @@ function SPRINT:HandleStaminaCalculation(ply)
 		-- @realm shared
 		hook.Run("TTT2StaminaDrain", ply, rateModifier)
 
-		local tarkovFactor = math.max(0, math.min(ply:Health() / 100, 1.0 - ply:GetNWInt("EffectAMT")))
-
-		newStamina = math.Clamp(sprintStamina - FrameTime() * rateModifier[1] * staminaConsumptionRate, 0, tarkovFactor)
+		newStamina = math.max(sprintStamina - FrameTime() * rateModifier[1] * staminaConsumptionRate, 0)
 	else
 		---
 		-- @realm shared
 		hook.Run("TTT2StaminaRegen", ply, rateModifier)
 
-		newStamina = math.min(sprintStamina + FrameTime() * rateModifier[1] * staminaRegeneratonRate, 1)
+		local tarkovFactor = math.max(0, math.min(ply:Health() / 100, 1.0 - ply:GetNWInt("EffectAMT")))
+
+		newStamina = math.Clamp(sprintStamina + FrameTime() * rateModifier[1] * staminaRegeneratonRate, 0, tarkovFactor)
 	end
 
 	ply:SetStamina(newStamina)
