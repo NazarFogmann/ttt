@@ -24,7 +24,7 @@ function plymeta:SetupDataTables()
 	self:NetworkVar("Float", 0, "Stamina")
 
 	if SERVER then
-		self:SetStamina(1.0)
+		self:SetStamina(1)
 	end
 end
 

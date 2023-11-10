@@ -632,6 +632,8 @@ function plymeta:SpawnForRound(deadOnly)
 	self:SetTeam(TEAM_TERROR)
 	self:Spawn()
 
+	self:SetStamina(1)
+
 	-- set spawn position
 	local spawnPoint = plyspawn.GetRandomSafePlayerSpawnPoint(self)
 
