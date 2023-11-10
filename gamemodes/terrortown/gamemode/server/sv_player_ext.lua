@@ -611,6 +611,7 @@ function plymeta:SpawnForRound(deadOnly)
 	if deadOnly and self:Alive() and not self:IsSpec() then
 		-- if the player does not need respawn, make sure he has full health
 		self:SetHealth(self:GetMaxHealth())
+		self:SetStamina(1)
 
 		return false
 	end
@@ -852,6 +853,7 @@ function plymeta:Revive(delay, OnRevive, DoCheck, needsCorpse, blockRound, OnFai
 
 			self:SetMaxHealth(100)
 			self:SetHealth(100)
+			self:SetStamina(1)
 
 			self:SpawnForRound(true)
 
