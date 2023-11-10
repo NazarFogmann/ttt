@@ -20,8 +20,9 @@ local suppression_gasp_enabled = true
 local suppression_enable_vehicle = true
 
 function ApplySuppressionEffect(at, hit, start)
+	local lineStart = start or at:EyePos()
 	for _,v in ipairs(player.GetAll()) do
-		local distance, sup_point = util.DistanceToLine( start or at:EyePos(), hit, v:GetPos() )
+		local distance, sup_point = util.DistanceToLine( lineStart, hit, v:GetPos() )
 		if v:IsPlayer() and v:Alive() and (suppression_enabled:GetBool()) and distance < 100 and !(v == at) then
 			if (v:InVehicle() and !suppression_enable_vehicle) then return end
 			v:SetNWInt("EffectAMT", math.Clamp(v:GetNWInt("EffectAMT"), 0, 1) + 0.05 * (suppression_buildupspeed))
