@@ -1916,10 +1916,12 @@ L.credit_on_overtime = "Each team member was provided with a radar, whereas you 
 L.help_overtime_radar = "Traitors will receive radar or extra credit on overtime start."
 L.label_overtime_radar = "Enable Overtime Radar"
 
+
 -- 2023-11-09
 L.header_tarkov = "Escape from Kharkov"
 L.help_suppression = "Projectiles will begin to suppress players, reducing their will to fight, stamina and fps."
 L.label_suppression = "Enable Suppression"
 
+
 -- 2023-11-10
-L.too_low_stamina = "I don't have enough stamina to discern anything specific."
+L.too_low_stamina = "The suppression level is too intense to identify any specific details."

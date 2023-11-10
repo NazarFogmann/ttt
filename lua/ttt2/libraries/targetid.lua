@@ -393,14 +393,33 @@ function targetid.HUDDrawTargetIDPlayers(tData)
 	-- for compatibility reasons. At least it is uncluttered now!
 	client.last_id = disguised and nil or ent
 
+	local spectator = client:IsSpec()
+
 	-- do not show information when observing a player
-	if client:IsSpec() and IsValid(obsTgt) and ent == obsTgt then return end
+	if spectator and IsValid(obsTgt) and ent == obsTgt then return end
 
 	-- disguised players are not shown to normal players, except: same team, unknown team or to spectators
-	if disguised and not (client:IsInTeam(ent) and not client:GetSubRoleData().unknownTeam or client:IsSpec()) then return end
+	if disguised and not (client:IsInTeam(ent) and not client:GetSubRoleData().unknownTeam or spectator) then return end
+
+	-- stamina nerfocirc
+	local supress = math.max(0, 1.0 - client:GetNWInt("EffectAMT")) < 0.3
+	if not spectator and supress then
+		tData:EnableText()
+		tData:SetTitle(
+			TryT("target_unknown"),
+			nil,
+			nil
+		)
+		tData:SetSubtitle(TryT("too_low_stamina"))
+		tData:AddIcon(
+			materialRoleUnknown,
+			COLOR_SLATEGRAY
+		)
+		return
+	end
 
 	-- don't let you look too far
-	if tData:GetEntityDistance() >= 1750 then
+	if not spectator and tData:GetEntityDistance() >= 1750 then
 
 		local c_wep = client:GetActiveWeapon()
 		local unless = {
@@ -429,22 +448,6 @@ function targetid.HUDDrawTargetIDPlayers(tData)
 			return
 		end
 
-	end
-
-	-- stamina nerfocirc
-	if client:GetStamina() < 0.07 then
-		tData:EnableText()
-		tData:SetTitle(
-			TryT("target_unknown"),
-			nil,
-			nil
-		)
-		tData:SetSubtitle(TryT("too_low_stamina"))
-		tData:AddIcon(
-			materialRoleUnknown,
-			COLOR_SLATEGRAY
-		)
-		return
 	end
 
 	-- show the role of a player if it is known to the client
