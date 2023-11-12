@@ -135,7 +135,15 @@ end
 -- @hook
 -- @realm server
 function GM:TTT2CanHearVoiceChat(listener, speaker, isTeam)
-	if listener:GetTraitor() and speaker:GetTraitor() then
+	if 
+	listener:GetTraitor() 
+	and 
+	speaker:GetTraitor()
+	and
+	not listener:IsSpec()
+	and
+	not speaker:IsSpec()  
+	then
 		return true, false
 	end
 end
