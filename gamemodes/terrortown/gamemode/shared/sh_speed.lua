@@ -19,7 +19,7 @@ function SPEED:HandleSpeedCalculation(ply, moveData)
 	local wep = ply:GetActiveWeapon()
 
 	if IsValid(wep) and wep.GetIronsights and wep:GetIronsights() then
-		baseMultiplier = 120 / 220
+		baseMultiplier = wep.SightsSlowdown or 0.5
 		isSlowed = true
 	end
 

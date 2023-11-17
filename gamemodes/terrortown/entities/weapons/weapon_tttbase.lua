@@ -164,6 +164,8 @@ SWEP.fingerprints = {}
 SWEP.StaminaLoss = 0.05
 SWEP.StaminaCone = 3
 
+SWEP.SightsSlowdown = 0.5
+
 --[[
 	-- The position offset applied when entering the ironsight
 	SWEP.IronSightsPos = Vector(0, 0, 0)
