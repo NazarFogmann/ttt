@@ -135,7 +135,7 @@ end
 hook.Add("SetupMove", "Nerf Jump", function(ply, mv)
     if ply:OnGround() and mv:KeyPressed(IN_JUMP) then
 
-		local stamina = ply:GetStamina()
+		local stamina = ply:GetSprintStamina()
 
 		if stamina < 0.25 then
 			mv:RemoveKeys(IN_JUMP)
@@ -145,7 +145,7 @@ hook.Add("SetupMove", "Nerf Jump", function(ply, mv)
         ply:SetJumpPower(math.max(120, 160 * stamina))
 
 		if SERVER then
-			ply:SetStamina(math.max(stamina - 0.2, 0))
+			ply:SetSprintStamina(math.max(stamina - 0.2, 0))
 		end
 	end
 end)

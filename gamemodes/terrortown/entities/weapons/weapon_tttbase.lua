@@ -977,7 +977,7 @@ function SWEP:PrimaryAttack(worldsnd)
 
 	if SERVER then
 		local staminaTax = self:GetIronsights() and (self.StaminaLoss * 0.65) or self.StaminaLoss
-		owner:SetStamina(math.max(owner:GetStamina() - staminaTax, 0))
+		owner:SetSprintStamina(math.max(owner:GetSprintStamina() - staminaTax, 0))
 	end
 	
 end
