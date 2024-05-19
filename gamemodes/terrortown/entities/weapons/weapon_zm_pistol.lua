@@ -43,3 +43,5 @@ SWEP.idleResetFix = true
 
 SWEP.IronSightsPos = Vector(-5.95, -4, 2.799)
 SWEP.IronSightsAng = Vector(0, 0, 0)
+
+SWEP.StaminaLoss = 0.02

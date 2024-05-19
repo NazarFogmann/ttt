@@ -1,0 +1,13 @@
+vertexlitgeneric
+{
+
+$baseTexture "models\2spookyguys\francis_color"
+$bumpmap "models\2spookyguys\francis_normal"
+$nocull 1
+$phong 1
+$phongboost "1.5"
+$phongexponent 5
+$phongtint "[.85 .85 1]"
+$phongfresnelranges "[.3 .65 30]"
+$ambientocclusion 1
+}

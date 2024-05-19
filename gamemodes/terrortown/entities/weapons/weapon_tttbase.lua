@@ -189,6 +189,11 @@ SWEP.IdleAnim = ACT_VM_IDLE
 
 SWEP.fingerprints = {}
 
+SWEP.StaminaLoss = 0.05
+SWEP.StaminaCone = 3
+
+SWEP.SightsSlowdown = 0.5
+
 --[[
     -- The position offset applied when entering the ironsight
     SWEP.IronSightsPos = Vector(0, 0, 0)
@@ -968,13 +973,13 @@ function SWEP:PrimaryAttack(worldsnd)
         return
     end
 
-    owner:ViewPunch(
-        Angle(
-            util.SharedRandom(self:GetClass(), -0.2, -0.1, 0) * self:GetPrimaryRecoil(),
-            util.SharedRandom(self:GetClass(), -0.1, 0.1, 1) * self:GetPrimaryRecoil(),
-            0
-        )
-    )
+	owner:ViewPunch(Angle(util.SharedRandom(self:GetClass(), -0.2, -0.1, 0) * self.Primary.Recoil, util.SharedRandom(self:GetClass(), -0.1, 0.1, 1) * self.Primary.Recoil, 0))
+
+	if SERVER then
+		local staminaTax = self:GetIronsights() and (self.StaminaLoss * 0.65) or self.StaminaLoss
+		owner:SetStamina(math.max(owner:GetStamina() - staminaTax, 0))
+	end
+	
 end
 
 ---

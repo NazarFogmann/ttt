@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models/aw_tree/treeside"
+	"$bumpmap" "models/aw_tree/treeside_normal"
+}

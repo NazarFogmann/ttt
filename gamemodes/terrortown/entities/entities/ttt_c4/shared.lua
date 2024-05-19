@@ -113,6 +113,9 @@ function ENT:Initialize()
         self:SetRadius(1000)
     end
 
+	if not self:GetDmg() then
+		self:SetDmg(250)
+	end
     if not self:GetDmg() then
         self:SetDmg(200)
     end
@@ -188,6 +191,17 @@ function ENT:SphereDamage(dmgowner, center, radius)
             continue
         end
 
+		-- deadly up to a certain range, then a quick falloff within 100 units
+		d = math.max(0, math.sqrt(d) - 1250)
+		dmg = math.max(0, -0.01 * (d * d) + 125)
+		
+		local dmginfo = DamageInfo()
+		dmginfo:SetDamage(dmg)
+		dmginfo:SetAttacker(dmgowner)
+		dmginfo:SetInflictor(self)
+		dmginfo:SetDamageType(DMG_BLAST)
+		dmginfo:SetDamageForce(center - ply:GetPos())
+		dmginfo:SetDamagePosition(ply:GetPos())
         -- deadly up to a certain range, then a quick falloff within 100 units
         d = math.max(0, math.sqrt(d) - 490)
         dmg = -0.01 * (d * d) + 125
@@ -244,6 +258,8 @@ function ENT:Explode(tr)
         local dmgowner = self:GetThrower()
         dmgowner = IsValid(dmgowner) and dmgowner or self
 
+		local r_inner = 1500
+		local r_outer = self:GetRadius()
         local r_inner = self:GetRadiusInner()
         local r_outer = self:GetRadius()
 

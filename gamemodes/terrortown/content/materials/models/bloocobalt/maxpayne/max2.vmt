@@ -1,0 +1,6 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models\bloocobalt\maxpayne/max2"
+	"$halflambert" 1
+	"$nocull" 1
+}

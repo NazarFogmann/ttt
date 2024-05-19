@@ -432,15 +432,57 @@ function targetid.HUDDrawTargetIDPlayers(tData)
         return
     end
 
-    -- disguised players are not shown to normal players, except: same team, unknown team or to spectators
-    if
-        disguised
-        and not (
-            client:IsInTeam(ent) and not client:GetSubRoleData().unknownTeam or client:IsSpec()
-        )
-    then
-        return
-    end
+	-- disguised players are not shown to normal players, except: same team, unknown team or to spectators
+	if disguised and not (client:IsInTeam(ent) and not client:GetSubRoleData().unknownTeam or spectator) then return end
+
+	-- stamina nerfocirc
+	local supress = math.max(0, 1.0 - client:GetNWInt("EffectAMT")) < 0.3
+	if not spectator and supress then
+		tData:EnableText()
+		tData:SetTitle(
+			TryT("target_unknown"),
+			nil,
+			nil
+		)
+		tData:SetSubtitle(TryT("too_low_stamina"))
+		tData:AddIcon(
+			materialRoleUnknown,
+			COLOR_SLATEGRAY
+		)
+		return
+	end
+
+	-- don't let you look too far
+	if not spectator and tData:GetEntityDistance() >= 1750 then
+
+		local c_wep = client:GetActiveWeapon()
+		local unless = {
+			["weapon_ttt_binoculars"] = true, 
+			["weapon_zm_rifle"] = true, 
+			["weapon_ttt_aug"] = true, 
+			["weapon_ttt_awp"] = true, 
+			["weapon_ttt_g3sg1"] = true, 
+			["weapon_ttt_sg550"] = true, 
+			["weapon_ttt_sg552"] = true, 
+		}
+		local binoculars_useable = IsValid(c_wep) and unless[c_wep:GetClass()]
+
+		if not binoculars_useable then
+			tData:EnableText()
+			tData:SetTitle(
+				TryT("target_unknown"),
+				nil,
+				nil
+			)
+			tData:SetSubtitle(TryT("too_far_away"))
+			tData:AddIcon(
+				materialRoleUnknown,
+				COLOR_SLATEGRAY
+			)
+			return
+		end
+
+	end
 
     -- show the role of a player if it is known to the client
     local rstate = GetRoundState()
@@ -468,8 +510,15 @@ function targetid.HUDDrawTargetIDPlayers(tData)
     -- enable targetID rendering
     tData:EnableText()
 
-    -- add title and subtitle to the focused ent
-    local h_string, h_color = util.HealthToString(ent:Health(), ent:GetMaxHealth())
+	-- add title and subtitle to the focused ent
+	local health
+	if ragmod:IsRagdoll(ent) then
+		health = ent:GetNWFloat("rm_health", 100)
+	else
+		health = ent:Health()
+	end
+
+	local h_string, h_color = util.HealthToString(health, ent:GetMaxHealth())
 
     tData:SetTitle(
         ent:Nick() .. (disguised and (" " .. TryT("target_disg")) or ""),
@@ -512,10 +561,16 @@ function targetid.HUDDrawTargetIDRagdolls(tData)
         return
     end
 
-    -- only show this if the ragdoll has a nick, else it could be a mattress
-    if not CORPSE.GetPlayerNick(ent, false) then
-        return
-    end
+	-- only show this if the ragdoll has a nick, else it could be a mattress
+	if not CORPSE.GetPlayerNick(ent, false) then 
+		-- my dirty hack
+		if ragmod:IsRagmodRagdoll(ent) then
+			tData.data.ent = ent:GetNWEntity("ragmod_Owner", NULL)
+			targetid.HUDDrawTargetIDPlayers(tData)
+		end
+
+		return 
+	end
 
     local corpse_found = CORPSE.GetFound(ent, false) or not DetectiveMode()
     local corpse_ply = corpse_found and CORPSE.GetPlayer(ent) or false

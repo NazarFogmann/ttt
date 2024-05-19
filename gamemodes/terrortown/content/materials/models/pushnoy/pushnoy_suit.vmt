@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/pushnoy/pushnoy_suit"
+	"$halflambert" 1
+}

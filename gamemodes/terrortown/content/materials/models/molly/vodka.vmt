@@ -1,0 +1,12 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/molly/vodka"
+
+	"$phong" 		"1"
+	"$phongexponent"		"80"
+	"$phongboost"		"20"
+	"$phongfresnelranges"	"[0 0.5 1]"
+
+	$color2 "{150 200 255}"
+
+}

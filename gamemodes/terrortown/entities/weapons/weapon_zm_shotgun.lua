@@ -48,6 +48,9 @@ SWEP.idleResetFix = true
 SWEP.IronSightsPos = Vector(-6.881, -9.214, 2.66)
 SWEP.IronSightsAng = Vector(-0.101, -0.7, -0.201)
 
+SWEP.StaminaLoss = 0.20
+SWEP.StaminaCone = 1
+
 ---
 -- @ignore
 function SWEP:SetupDataTables()

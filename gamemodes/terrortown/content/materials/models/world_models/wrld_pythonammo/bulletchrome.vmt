@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "halflife/black"
+	"$envmap" "models/world_models/wrld_pythonammo/bulletCHROME"
+}

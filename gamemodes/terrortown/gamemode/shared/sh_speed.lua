@@ -2,6 +2,7 @@
 ---@class SPEED
 
 SPEED = {}
+SPEED = {}
 
 ---
 -- Handles the speed calculation based on the @{GM:TTTPlayerSpeedModifier} hook
@@ -94,6 +95,8 @@ if CLIENT then
         })
     end
 end
+
+local plymeta = assert(FindMetaTable("Player"), "FAILED TO FIND ENTITY TABLE")
 
 ---
 ---@class Player

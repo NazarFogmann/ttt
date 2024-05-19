@@ -1,0 +1,6 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models\lpereira4\maxpayne/max2"
+	"$halflambert" 1
+	"$nocull" 1
+}

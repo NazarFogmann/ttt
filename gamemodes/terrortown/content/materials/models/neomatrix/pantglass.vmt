@@ -1,0 +1,13 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/neomatrix/pantglass"
+	"$bumpmap" "models/neomatrix/pantglass_normal"
+	"$halflambert" "1"
+	
+	//"$envmap" "1"
+	"$model" "1"
+	"$phong" "1"
+	"$phongboost" "2"
+	"$phongexponent" "10"
+	// "$phongfresnelranges"	"[0.2 2 10]"
+}

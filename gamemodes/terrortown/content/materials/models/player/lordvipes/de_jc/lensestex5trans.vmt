@@ -1,0 +1,13 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models\player\lordvipes\de_jc\lensestex5"
+                "$bumpmap"    "models\player\lordvipes\de_jc\lensestex5_n"
+	"$phong" "1"
+	"$phongexponent" "5"
+	"$phongboost"	"1"
+	"$phongfresnelranges"	"[.05 0.3 48]"
+$translucent 1
+ "$basetexturealphaenvmapmask" 1
+"$envmap"	"models\player\lordvipes\de_jc\lensestex5"
+
+}

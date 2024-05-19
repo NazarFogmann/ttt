@@ -1,0 +1,5 @@
+"UnlitGeneric"
+{
+	"$basetexture" "vgui/entities/npc_matrixneo_p"
+	"$translucent" 1
+}

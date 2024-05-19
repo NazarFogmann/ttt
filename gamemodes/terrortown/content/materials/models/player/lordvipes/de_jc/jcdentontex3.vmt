@@ -1,0 +1,9 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models\player\lordvipes\de_jc\jcdentontex3"
+                "$bumpmap"    "models\player\lordvipes\de_jc\jcdentontex3_n"
+	"$phong" "1"
+	"$phongexponent" "5"
+	"$phongboost"	"1"
+	"$phongfresnelranges"	"[.5 3 48]"
+}

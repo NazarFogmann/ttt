@@ -678,13 +678,13 @@ function plymeta:InitialSpawn()
     -- The team the player spawns on depends on the round state
     self:SetTeam(GetRoundState() == ROUND_PREP and TEAM_TERROR or TEAM_SPEC)
 
-    -- Change some gmod defaults
-    self:SetCanZoom(false)
-    self:SetJumpPower(160)
-    self:SetCrouchedWalkSpeed(0.3)
-    self:SetRunSpeed(220)
-    self:SetWalkSpeed(220)
-    self:SetMaxSpeed(220)
+	-- Change some gmod defaults
+	self:SetCanZoom(false)
+	self:SetJumpPower(160)
+	self:SetCrouchedWalkSpeed(0.3)
+	self:SetRunSpeed(180)
+	self:SetWalkSpeed(180)
+	self:SetMaxSpeed(180)
 
     self:ResetStatus()
 

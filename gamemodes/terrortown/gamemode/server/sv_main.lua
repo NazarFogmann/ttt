@@ -239,6 +239,10 @@ local ttt_dbgwin = CreateConVar("ttt_debug_preventwin", "0", {FCVAR_NOTIFY, FCVA
 -- stylua: ignore
 local ttt_newroles_enabled = CreateConVar("ttt_newroles_enabled", "1", {FCVAR_NOTIFY, FCVAR_ARCHIVE})
 
+---
+-- @realm server
+local ttt_overtime_radar = CreateConVar("ttt_overtime_radar", "1", {FCVAR_NOTIFY, FCVAR_ARCHIVE})
+
 -- Pool some network names.
 util.AddNetworkString("TTT_RoundState")
 util.AddNetworkString("TTT_GameMsg")
@@ -371,9 +375,11 @@ function GM:Initialize()
     self.force_plymodel = ""
     self.propspec_allow_named = true
 
-    self.MapWin = WIN_NONE
-    self.AwardedCredits = false
-    self.AwardedCreditsDead = 0
+	self.MapWin = WIN_NONE
+	self.AwardedCredits = false
+	self.AwardedCreditsDead = 0
+
+	self.Overtime = false
 
     self.round_state = ROUND_WAIT
     self.FirstRound = true
@@ -810,12 +816,36 @@ local function WinChecker()
         -- stylua: ignore
         win = win or hook.Run("TTTCheckForWin")
 
-        if win == WIN_NONE then
-            return
-        end
+		if win == WIN_NONE then 
+			if ttt_haste:GetBool() and not GAMEMODE.Overtime and CurTime() > GetGlobalFloat("ttt_haste_end", 0) then
+				GAMEMODE.Overtime = true
+				OnOvertimeStart()
+			end
+			return 
+		end
+		
+		EndRound(win)
+	end
+end
 
-        EndRound(win)
-    end
+function OnOvertimeStart()
+	if not ttt_overtime_radar:GetBool() then return end
+
+	local plys = player.GetAll()
+
+	for i = 1, #plys do
+		local ply = plys[i]
+
+		if ply:IsTerror() and ply:GetTraitor() then
+			if ply:HasEquipmentItem("item_ttt_radar") then
+				LANG.Msg(ply, "credit_on_overtime", {num = 1}, MSG_MSTACK_ROLE)
+				ply:AddCredits(1)
+			else
+				LANG.Msg(ply, "radar_on_overtime", nil, MSG_MSTACK_ROLE)
+				ply:AddEquipmentItem("item_ttt_radar")
+			end
+		end
+	end
 end
 
 local function NameChangeKick()
@@ -1025,9 +1055,11 @@ function PrepareRound()
 
     GAMEMODE.roundCount = GAMEMODE.roundCount + 1
 
-    GAMEMODE.MapWin = WIN_NONE
-    GAMEMODE.AwardedCredits = false
-    GAMEMODE.AwardedCreditsDead = 0
+	GAMEMODE.MapWin = WIN_NONE
+	GAMEMODE.AwardedCredits = false
+	GAMEMODE.AwardedCreditsDead = 0
+
+	GAMEMODE.Overtime = false
 
     events.Reset()
 
@@ -1043,6 +1075,7 @@ function PrepareRound()
         GAMEMODE.playermodel = GAMEMODE.force_plymodel
     elseif cvSelectModelPerRound:GetBool() then
         GAMEMODE.playermodel = playermodels.GetRandomPlayerModel()
+		playermodels.uniquePlayermodels = {}
     end
 
     ---

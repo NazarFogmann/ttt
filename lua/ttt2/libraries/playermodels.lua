@@ -65,11 +65,33 @@ playermodels.accessLevel = TTT2_DATABASE_ACCESS_ANY
 playermodels.fallbackModel = "models/player/phoenix.mdl"
 
 playermodels.hasHeadHitBox = {}
+playermodels.uniquePlayermodels = {}
 
 -- Enums for the states
 playermodels.state = {
     selected = "selected",
     hattable = "hattable",
+}
+
+playermodels.cvShelbyDetective = CreateConVar("ttt2_shelby_detective", "1", {FCVAR_NOTIFY, FCVAR_ARCHIVE})
+
+playermodels.cvGangModels = CreateConVar("ttt2_gang_models", "0", {FCVAR_NOTIFY, FCVAR_ARCHIVE})
+
+playermodels.gang = {
+	["76561198164503874"] = "models/player/griffbo/TerranceDavis.mdl", -- Me :^)
+	["76561198073249722"] = "models/player/nabiguzoje/weedfreeman/weedfreeman.mdl", -- NFogmann
+	["76561198445691523"] = "models/player/ena/ena.mdl", -- BombanyTI
+	["76561198092425714"] = "models/matrix/neo_player.mdl", -- Blinkot
+	["76561198086008629"] = "models/player/fring/Gus.mdl", -- Torn
+	["76561198029426954"] = "models/player/mike.mdl", -- Mohito
+	["76561198136588834"] = "models/player/niko/niko_bellic/nikob.mdl", -- Fotgof
+	["76561198056219390"] = "models/player/bird/bird.mdl", -- Alexix
+	["76561198152620069"] = "models/pushnoy/pushnoy.mdl", -- Tapko4eb
+	["76561198162236852"] = "models/patrickbateman/Playermodels/patrickbateman.mdl", -- KaponeS
+	["76561198157340998"] = "models/player/ocelot.mdl", -- Kalik
+	["76561198327554890"] = "models/nba2k11/players/lebron/lebron_james.mdl", -- Bon
+	["76561198047777375"] = "models/player/lpereira4/maxpayne2.mdl", -- Orange
+	["76561198152547472"] = "models/player/strelok/strelok.mdl", -- Sraka
 }
 
 ---

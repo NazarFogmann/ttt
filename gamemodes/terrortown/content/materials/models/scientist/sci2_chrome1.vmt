@@ -1,0 +1,7 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "halflife/black"
+//	"$detail" "detail/detail_noise1"
+//	"$detailscale" 2.5
+	"$envmap" "models/scientist/Sci2_Chrome1"
+}

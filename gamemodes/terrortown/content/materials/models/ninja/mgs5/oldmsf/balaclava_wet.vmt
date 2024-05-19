@@ -1,0 +1,17 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models\ninja/mgs5/oldmsf/balaclava_wet"
+	"$bumpmap" "models\ninja/mgs5/oldmsf/balaclava_wet_N"
+	"$phong" "1"
+//	"$phongexponent" "5"
+	"$phongexponenttexture" "models\ninja/mgs5/oldmsf/balaclava_wet_exp"
+	"$phongalbedotint" "0"
+	"$phongboost" "0.5"
+	"$phongfresnelranges"	"[5 6 8]"
+
+        "$lightwarptexture" 	"models\ninja/mgs5/Clothes_wrp"
+//	$translucent 1
+}
+
+
+

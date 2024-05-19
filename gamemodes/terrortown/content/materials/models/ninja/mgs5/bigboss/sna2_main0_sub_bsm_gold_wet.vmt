@@ -1,0 +1,22 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models\ninja/mgs5/bigboss/sna2_main0_sub_bsm"
+    "$bumpmap"    "models\ninja/mgs5/bigboss/sna2_main0_gold_nrm_wet"
+	
+	"$normalmapalphaenvmapmask" 1
+	"$envmap" "env_cubemap"
+	"$envmaptint" "[ 1 .8 .3 ]"
+	"$envmapsaturation" ".02"
+	//"$envmapFresnel" "1"
+
+	"$phong" "1"
+	"$phongexponent" "6"
+	"$phongboost" "4"
+	"$phongfresnelranges"	"[5 6 8]"
+	"$PhongAlbedoTint" "1"
+	"$phongexponenttexture" "models\ninja/mgs5/shared/white2"
+	"$lightwarptexture" 	"models\ninja/mgs5/Clothes_wrp"
+}
+
+
+

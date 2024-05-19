@@ -19,7 +19,7 @@ SWEP.Base = "weapon_tttbase"
 
 SWEP.Primary.Recoil = 0.9
 SWEP.Primary.Damage = 12
-SWEP.Primary.Delay = 0.10
+SWEP.Primary.Delay = 0.09
 SWEP.Primary.Cone = 0.028
 SWEP.Primary.ClipSize = 20
 SWEP.Primary.Automatic = true
@@ -45,3 +45,5 @@ SWEP.WorldModel = "models/weapons/w_pist_glock18.mdl"
 SWEP.idleResetFix = true
 
 SWEP.IronSightsPos = Vector(-5.79, -3.9982, 2.8289)
+
+SWEP.StaminaLoss = 0.02

@@ -8,8 +8,8 @@ if CLIENT then
     SWEP.PrintName = "grenade_smoke"
     SWEP.Slot = 3
 
-    SWEP.ViewModelFlip = false
-    SWEP.ViewModelFOV = 54
+	SWEP.ViewModelFlip = true
+	SWEP.ViewModelFOV = 54
 
     SWEP.Icon = "vgui/ttt/icon_smokegrenade"
     SWEP.IconLetter = "Q"
@@ -23,8 +23,8 @@ SWEP.Kind = WEAPON_NADE
 SWEP.spawnType = WEAPON_TYPE_NADE
 
 SWEP.UseHands = true
-SWEP.ViewModel = "models/weapons/cstrike/c_eq_smokegrenade.mdl"
-SWEP.WorldModel = "models/weapons/w_eq_smokegrenade.mdl"
+SWEP.ViewModel = "models/weapons/v_eq_smokegrenade.mdl"
+SWEP.WorldModel = "models/weapons/w_eq_smokegrenade_thrown.mdl"
 
 SWEP.Weight = 5
 SWEP.AutoSpawnable = true
@@ -34,5 +34,5 @@ SWEP.Spawnable = true
 -- really the only difference between grenade weapons: the model and the thrown ent.
 -- @ignore
 function SWEP:GetGrenadeName()
-    return "ttt_smokegrenade_proj"
+	return "ifs_smoke_proj"
 end

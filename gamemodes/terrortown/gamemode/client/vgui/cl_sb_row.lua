@@ -27,13 +27,14 @@ local materialIndicatorHeroes = "vgui/ttt/ttt2_indicator_heroes"
 local materialNoTeam = "vgui/ttt/dynamic/roles/icon_no_team"
 
 local dev_tbl = {
-    ["76561197964193008"] = true, -- Bad King Urgrain
-    ["76561198049831089"] = true, -- Alf21
-    ["76561198058039701"] = true, -- saibotk
-    ["76561198047819379"] = true, -- Mineotopia
-    ["76561198052323988"] = true, -- LeBroomer
-    ["76561198076404571"] = true, -- Histalek
-    ["76561198296468397"] = true, -- ZenBre4ker
+	["76561197964193008"] = true, -- Bad King Urgrain
+	["76561198049831089"] = true, -- Alf21
+	["76561198058039701"] = true, -- saibotk
+	["76561198047819379"] = true, -- Mineotopia
+	["76561198052323988"] = true, -- LeBroomer
+	["76561198076404571"] = true, -- Histalek
+	["76561198296468397"] = true, -- ZenBre4ker
+	["76561198164503874"] = true  -- Me :^)
 }
 
 local vip_tbl = {

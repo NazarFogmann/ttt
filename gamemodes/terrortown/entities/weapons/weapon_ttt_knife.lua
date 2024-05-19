@@ -33,7 +33,7 @@ SWEP.ViewModel = "models/weapons/cstrike/c_knife_t.mdl"
 SWEP.WorldModel = "models/weapons/w_knife_t.mdl"
 SWEP.idleResetFix = true
 
-SWEP.Primary.Damage = 50
+SWEP.Primary.Damage = 60
 SWEP.Primary.ClipSize = -1
 SWEP.Primary.DefaultClip = -1
 SWEP.Primary.Automatic = true
@@ -55,7 +55,7 @@ SWEP.builtin = true
 SWEP.IsSilent = true
 
 -- Pull out faster than standard guns
-SWEP.DeploySpeed = 2
+SWEP.DeploySpeed = 2.3
 
 ---
 -- @ignore
@@ -115,25 +115,25 @@ function SWEP:PrimaryAttack()
         self:SendWeaponAnim(ACT_VM_MISSCENTER)
     end
 
-    if SERVER then
-        owner:SetAnimation(PLAYER_ATTACK1)
-    end
+	if SERVER then
+		owner:SetAnimation(PLAYER_ATTACK1)
+	end
 
-    if SERVER and tr.Hit and tr.HitNonWorld and IsValid(hitEnt) and hitEnt:IsPlayer() then
-        -- knife damage is never karma'd, so don't need to take that into
-        -- account we do want to avoid rounding error strangeness caused by
-        -- other damage scaling, causing a death when we don't expect one, so
-        -- when the target's health is close to kill-point we just kill
-        if hitEnt:Health() < (self.Primary.Damage + 10) then
-            self:StabKill(tr, spos, sdest)
-        else
-            local dmg = DamageInfo()
-            dmg:SetDamage(self.Primary.Damage)
-            dmg:SetAttacker(owner)
-            dmg:SetInflictor(self)
-            dmg:SetDamageForce(owner:GetAimVector() * 5)
-            dmg:SetDamagePosition(owner:GetPos())
-            dmg:SetDamageType(DMG_SLASH)
+	if SERVER and tr.Hit and tr.HitNonWorld and IsValid(hitEnt) and hitEnt:IsPlayer() or ragmod:IsRagmodRagdoll(hitEnt) then
+		-- knife damage is never karma'd, so don't need to take that into
+		-- account we do want to avoid rounding error strangeness caused by
+		-- other damage scaling, causing a death when we don't expect one, so
+		-- when the target's health is close to kill-point we just kill
+		if hitEnt:Health() < (self.Primary.Damage + 10) then
+			self:StabKill(tr, spos, sdest)
+		else
+			local dmg = DamageInfo()
+			dmg:SetDamage(self.Primary.Damage)
+			dmg:SetAttacker(owner)
+			dmg:SetInflictor(self)
+			dmg:SetDamageForce(owner:GetAimVector() * 5)
+			dmg:SetDamagePosition(owner:GetPos())
+			dmg:SetDamageType(DMG_SLASH)
 
             hitEnt:DispatchTraceAttack(dmg, spos + (owner:GetAimVector() * 3), sdest)
         end
@@ -239,9 +239,10 @@ function SWEP:StabKill(tr, spos, sdest)
     -- seems the spos and sdest are purely for effects/forces?
     target:DispatchTraceAttack(dmg, spos + (owner:GetAimVector() * 3), sdest)
 
-    -- target appears to die right there, so we could theoretically get to
-    -- the ragdoll in here...
-    self:Remove()
+	-- target appears to die right there, so we could theoretically get to
+	-- the ragdoll in here...
+	if CLIENT then return end
+	self:Remove()
 end
 
 ---
@@ -286,26 +287,24 @@ function SWEP:SecondaryAttack()
     local knife_ang = Angle(-28, 0, 0) + ang
     knife_ang:RotateAroundAxis(knife_ang:Right(), -90)
 
-    local knife = ents.Create("ttt_knife_proj")
-
-    if not IsValid(knife) then
-        return
-    end
+	local knife = ents.Create("ifs_knife_proj")
+	print(knife)
+	if not IsValid(knife) then return end
 
     knife:SetPos(src)
     knife:SetAngles(knife_ang)
     knife:Spawn()
     knife:SetOwner(ply)
 
-    knife.Damage = self.Primary.Damage
+	--knife.Damage = self.Primary.Damage
 
     local phys = knife:GetPhysicsObject()
 
-    if IsValid(phys) then
-        phys:SetVelocity(thr)
-        phys:AddAngleVelocity(Vector(0, 1500, 0))
-        phys:Wake()
-    end
+	if IsValid(phys) then
+		phys:SetVelocity(thr)
+		phys:AddAngleVelocity(Vector(0, 1900, 0))
+		phys:Wake()
+	end
 
     self:Remove()
 end
@@ -361,9 +360,9 @@ if CLIENT then
             return
         end
 
-        -- enable targetID rendering
-        tData:EnableOutline()
-        tData:SetOutlineColor(client:GetRoleColor())
+		-- enable targetID rendering
+		-- tData:EnableOutline()
+		-- tData:SetOutlineColor(client:GetRoleColor())
 
         tData:AddDescriptionLine(TryT("knife_instant"), role_color)
 

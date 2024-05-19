@@ -1,0 +1,14 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "62ndmaterials/model/ena/skirt"
+	"$lightwarptexture" "62ndmaterials/model/ena/lm_cloth"
+	"$phongexponenttexture" "62ndmaterials/model/ena/skirta"
+	"$bumpmap"	"models/debug/debugwhite"
+	"$phong" "1"
+	"$nocull"	"1"
+	"$phongboost"	".05"
+	"$phongalbedotint" "1"
+	"$phongfresnelranges"	"[.1 .1 .1]"
+	"$PhongExponent" "1"
+	"$halflambert" "1"
+}

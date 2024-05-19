@@ -1,0 +1,7 @@
+"VertexlitGeneric"
+{
+"$basetexture" "models\2spookyguys\bag"
+"$bumpmap" "models\2spookyguys\bag_n"
+$nocull 1
+}
+

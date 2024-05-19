@@ -1,0 +1,7 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" 				"models/gus/lashes"
+	$translucent				1
+	$nocull						1
+
+}

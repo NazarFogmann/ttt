@@ -1,0 +1,21 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models\player\lordvipes\de_jc\jcdentontex2"
+                "$bumpmap"    "models\player\lordvipes\de_jc\jcdentontex2_n"
+	"$phong" "1"
+	"$phongexponent" "5"
+	"$phongboost"	"1"
+	"$phongfresnelranges"	"[.5 3 48]"
+
+	"$blendtintbybasealpha" "1" 
+ 	"$blendtintcoloroverbase" "0"
+	
+	Proxies
+	{
+		PlayerColor
+		{
+			resultVar	$color2
+			default		0.53 0.46 0.39
+		}
+	}
+}

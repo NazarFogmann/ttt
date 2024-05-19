@@ -1,0 +1,4 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/CS/Playermodels/view_finger"
+"$nocull" "1" "$halflambert" "1" }

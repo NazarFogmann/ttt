@@ -318,7 +318,7 @@ Plays sounds to distract or deceive.
 Place the radio somewhere, and then play sounds on it using the Radio tab in this menu.]]
 
 -- Silenced pistol
-L.sipistol_name = "Silenced Pistol"
+L.sipistol_name = "USP-S"
 
 L.sipistol_desc = [[
 Low-noise handgun, uses normal pistol ammo.
@@ -369,14 +369,14 @@ L.magnet_name = "Magneto-stick"
 L.magnet_help = "{primaryfire} to attach body to surface."
 
 -- Grenades and misc
-L.grenade_smoke = "Smoke grenade"
-L.grenade_fire = "Incendiary grenade"
+L.grenade_smoke = "Smoke Grenade"
+L.grenade_fire = "Molotov Cocktail"
 
 L.unarmed_name = "Holstered"
 L.crowbar_name = "Crowbar"
-L.pistol_name = "Pistol"
-L.rifle_name = "Rifle"
-L.shotgun_name = "Shotgun"
+L.pistol_name = "Five-Seven"
+L.rifle_name = "Scout"
+L.shotgun_name = "Benelli"
 
 -- Teleporter
 L.tele_name = "Teleporter"
@@ -399,11 +399,11 @@ Teleport to a previously marked spot.
 Teleporting makes noise, and the number of uses is limited.]]
 
 -- Ammo names, shown when picked up
-L.ammo_pistol = "9mm ammo"
+L.ammo_pistol = "Parabellum ammo"
 
-L.ammo_smg1 = "SMG ammo"
-L.ammo_buckshot = "Shotgun ammo"
-L.ammo_357 = "Rifle ammo"
+L.ammo_smg1 = "Browning ammo"
+L.ammo_buckshot = "Buckshot ammo"
+L.ammo_357 = "Magnum ammo"
 L.ammo_alyxgun = "Deagle ammo"
 L.ammo_ar2altfire = "Flare ammo"
 L.ammo_gravity = "Poltergeist ammo"

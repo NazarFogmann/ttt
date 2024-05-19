@@ -36,7 +36,10 @@ local ttt_dyingshot = CreateConVar("ttt_dyingshot", "0", {FCVAR_NOTIFY, FCVAR_AR
 
 ---
 -- @realm server
--- stylua: ignore
+local ttt_unique_playermodels = CreateConVar("ttt_unique_playermodels", "1", {FCVAR_NOTIFY, FCVAR_ARCHIVE})
+
+---
+-- @realm server
 CreateConVar("ttt_killer_dna_range", "550", {FCVAR_NOTIFY, FCVAR_ARCHIVE})
 
 ---
@@ -129,6 +132,10 @@ function GM:PlayerSpawn(ply)
 
     -- reset any cached weapons
     ply:ResetCachedWeapons()
+	player_manager.SetPlayerClass(ply, "player_ttt")
+
+	-- reset any cached weapons
+	ply:ResetCachedWeapons()
 
     -- Allow bots to wander again.
     if ply:IsBot() then
@@ -289,8 +296,22 @@ function GM:PlayerSetModel(ply)
     -- breaks with external model selectors.
     if not IsValid(ply) then return end
 
-    -- this will call the overwritten internal function to modify the model
-    ply:SetModel(ply.defaultModel or GAMEMODE.playermodel)
+	-- this will call the overwritten internal function to modify the model
+	if ttt_unique_playermodels:GetBool() then
+		if not playermodels.uniquePlayermodels[ply] then
+
+			if playermodels.cvGangModels:GetBool() and playermodels.gang[ply:SteamID64()] then
+				playermodels.uniquePlayermodels[ply] = playermodels.gang[ply:SteamID64()]
+			else
+				playermodels.uniquePlayermodels[ply] = playermodels.GetRandomPlayerModel()
+			end
+
+			ply:SetModel(playermodels.uniquePlayermodels[ply])
+		end
+			
+	else
+		ply:SetModel(ply.defaultModel or GAMEMODE.playermodel)
+	end
 
     -- Always clear color state, may later be changed in TTTPlayerSetColor
     ply:SetColor(COLOR_WHITE)

@@ -1,0 +1,4 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/CS/Playermodels/Sas_dmbase(blue)2"
+"$nocull" "1" "$halflambert" "1" }

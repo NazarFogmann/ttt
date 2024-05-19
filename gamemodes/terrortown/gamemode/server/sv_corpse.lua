@@ -492,23 +492,35 @@ function CORPSE.Create(ply, attacker, dmginfo)
     local efn = ply.effect_fn
     ply.effect_fn = nil
 
-    local rag = ents.Create("prop_ragdoll")
-    if not IsValid(rag) then
-        return
-    end
+	local ragmod_enabled = RagModOptions.Enabled()
+	local rag
+	
+	if ragmod_enabled then
+		if ragmod:IsRagdoll(ply) then
+			rag = ragmod:GetRagmodRagdoll(ply)
+		else
+			rag = ragmod:TryToRagdoll(ply)
+		end	
+	else
+		rag = ents.Create("prop_ragdoll")
+	end
 
-    rag:SetPos(ply:GetPos())
-    rag:SetModel(ply:GetModel())
-    rag:SetSkin(ply:GetSkin())
-    rag:SetAngles(ply:GetAngles())
-    rag:SetColor(ply:GetColor())
+	if not IsValid(rag) then return end
 
-    rag:Spawn()
-    rag:Activate()
+	if not ragmod_enabled then
+		rag:SetPos(ply:GetPos())
+		rag:SetModel(ply:GetModel())
+		rag:SetSkin(ply:GetSkin())
+		rag:SetAngles(ply:GetAngles())
+		rag:SetColor(ply:GetColor())
 
-    -- nonsolid to players, but can be picked up and shot
-    rag:SetCollisionGroup(COLLISION_GROUP_WEAPON)
-    rag:SetCustomCollisionCheck(true)
+		rag:Spawn()
+		rag:Activate()
+	end
+
+	-- nonsolid to players, but can be picked up and shot
+	-- rag:SetCollisionGroup(COLLISION_GROUP_WEAPON)
+	-- rag:SetCustomCollisionCheck(true)
 
     -- flag this ragdoll as being a player's
     rag.player_ragdoll = true
@@ -558,21 +570,21 @@ function CORPSE.Create(ply, attacker, dmginfo)
     -- stylua: ignore
     hook.Run("TTT2ModifyRagdollVelocity", ply, rag, v)
 
-    for i = 0, num do
-        local bone = rag:GetPhysicsObjectNum(i)
-
-        if IsValid(bone) then
-            local bp, ba = ply:GetBonePosition(rag:TranslatePhysBoneToBone(i))
-
-            if bp and ba then
-                bone:SetPos(bp)
-                bone:SetAngles(ba)
-            end
-
-            -- not sure if this will work:
-            bone:SetVelocity(v)
-        end
-    end
+	for i = 0, num do
+		local bone = rag:GetPhysicsObjectNum(i)
+	
+		if IsValid(bone) then
+			local bp, ba = ply:GetBonePosition(rag:TranslatePhysBoneToBone(i))
+	
+			if not ragmod_enabled and bp and ba then
+				bone:SetPos(bp)
+				bone:SetAngles(ba)
+			end
+	
+			-- not sure if this will work:
+			bone:SetVelocity(v)
+		end
+	end
 
     -- create advanced death effects (knives)
     if efn then

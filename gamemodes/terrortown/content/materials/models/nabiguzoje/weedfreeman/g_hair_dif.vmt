@@ -1,0 +1,9 @@
+"vertexlitgeneric"
+{
+	"$baseTexture" "models\nabiguzoje\weedfreeman\g_hair_dif"
+	"$halflambert" "0"
+	"$translucent" "1"
+	"$nocull" "1"
+	"$ambientocclusion" "0"	
+//	"$lightwarptexture" "models\nabiguzoje\weedfreeman\g_warp"
+}

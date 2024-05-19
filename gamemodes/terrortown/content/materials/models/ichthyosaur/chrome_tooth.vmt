@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "halflife/black"
+	"$envmap" "models/ichthyosaur/chrome_tooth"
+}

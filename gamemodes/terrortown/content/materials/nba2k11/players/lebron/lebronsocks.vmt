@@ -1,0 +1,7 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "nba2k11/players/lebron/lebronsocks"
+	"$surfaceprop" "plaster"
+	"$bumpmap" "nba2k11/players/lebron/lebronsocks_normal"
+	"$normalmapalphaenvmapmask" "1"
+}

@@ -5,8 +5,8 @@ end
 SWEP.HoldType = "crossbow"
 
 if CLIENT then
-    SWEP.PrintName = "H.U.G.E-249"
-    SWEP.Slot = 2
+	SWEP.PrintName = "SAW"
+	SWEP.Slot = 2
 
     SWEP.ViewModelFlip = false
     SWEP.ViewModelFOV = 54
@@ -25,7 +25,7 @@ SWEP.WeaponID = AMMO_M249
 SWEP.builtin = true
 SWEP.spawnType = WEAPON_TYPE_HEAVY
 
-SWEP.Primary.Damage = 7
+SWEP.Primary.Damage = 9
 SWEP.Primary.Delay = 0.06
 SWEP.Primary.Cone = 0.09
 SWEP.Primary.ClipSize = 150
@@ -43,5 +43,7 @@ SWEP.idleResetFix = true
 
 SWEP.HeadshotMultiplier = 2.2
 
-SWEP.IronSightsPos = Vector(-5.96, -5.119, 2.349)
+SWEP.IronSightsPos = Vector(-5.96, -5.119, 3.149)
 SWEP.IronSightsAng = Vector(0, 0, 0)
+
+SWEP.StaminaLoss = 0.03

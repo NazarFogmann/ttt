@@ -1,0 +1,15 @@
+"VertexLitGeneric"
+{
+	// Original shader: VertexLitTexture
+	"$basetexture" "models\2spookyguys/simon_facemap"
+	"$bumpmap" "models\2spookyguys/ted_facemap_n"
+$phong "1"
+$phongexponent "3"
+$phongboost "0.05"
+$phongfresnelranges  "[1 1 30]"
+$phongalbedotint "1"
+
+$rimlight "0"
+$rimlightexponent "7"
+$rimlightboost "0.4"
+}

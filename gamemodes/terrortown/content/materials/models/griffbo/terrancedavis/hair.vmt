@@ -1,0 +1,7 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/griffbo/TerranceDavis/Hair"
+	"$alphatest" 1
+	"$allowAlphaToCoverage" 1
+
+}

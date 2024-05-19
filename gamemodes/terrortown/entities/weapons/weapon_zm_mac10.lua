@@ -46,6 +46,8 @@ SWEP.IronSightsAng = Vector(0.699, -5.301, -7)
 
 SWEP.DeploySpeed = 3
 
+SWEP.StaminaLoss = 0.02
+
 ---
 -- @ignore
 function SWEP:GetHeadshotMultiplier(victim, dmginfo)

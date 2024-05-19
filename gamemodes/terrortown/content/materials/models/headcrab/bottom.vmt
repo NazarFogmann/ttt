@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/headcrab/bottom"
+	"$bumpmap" "models/headcrab/bottom_normal"
+}

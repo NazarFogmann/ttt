@@ -1,0 +1,13 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/kaesar/thomas_shelby/Std_Cornea_L_diffuse"
+
+	"$phong" "1"
+	"$phongexponent" "5"
+	"$phongboost" "0.1"	
+	"$phongfresnelranges"	"[.07 .07 .07]"
+	"$halflambert" "1"
+
+}
+
+

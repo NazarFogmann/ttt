@@ -380,3 +380,7 @@ function plymeta:SetSettingOnServer(identifier, value)
     -- stylua: ignore
     hook.Run("TTT2PlayerSettingChanged", self, identifier, oldValue, self.playerSettings[identifier])
 end
+
+hook.Add("RM_CanChangeCamera", "ragmod_CanChangeCamera", function(ply)
+	return !ply:IsSpec()
+end)

@@ -1,0 +1,15 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models\2spookyguys/davidhoodie"
+	"$bumpmap" "models\2spookyguys/Tex_0010_n"
+
+$phong "1"
+$phongexponent "3"
+$phongboost "0.002"
+$phongfresnelranges  "[1 1 30]"
+$phongalbedotint "1"
+
+$rimlight "1"
+$rimlightexponent "7"
+$rimlightboost "0.2"
+}
