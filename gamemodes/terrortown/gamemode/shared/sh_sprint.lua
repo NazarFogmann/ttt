@@ -49,6 +49,10 @@ end
 -- Calculates the new stamina values for a given player.
 -- @param Player ply
 -- @realm shared
+function math.clamp(value, min, max)
+    return math.min(math.max(value, min), max)
+end
+
 function SPRINT:HandleStaminaCalculation(ply)
     local staminaRegeneratonRate = self.convars.regeneration:GetFloat()
     local staminaConsumptionRate = self.convars.consumption:GetFloat()
@@ -82,9 +86,10 @@ function SPRINT:HandleStaminaCalculation(ply)
         hook.Run("TTT2StaminaRegen", ply, rateModifier)
 
         local tarkovFactor = math.max(0, math.min(ply:Health() / 100, 1.0 - ply:GetNWInt("EffectAMT")))
-
+-- suka pochemu clamp bil undefin
+--balansite sami etu huetu, ya che pohozh na matematika?
         newStamina =
-            math.min(sprintStamina + FrameTime() * rateModifier[1] * staminaRegeneratonRate, 1, tarkovFactor)
+            math.min(sprintStamina + FrameTime() * rateModifier[1] * staminaRegeneratonRate, 1)
     end
 
     ply:SetSprintStamina(newStamina)
