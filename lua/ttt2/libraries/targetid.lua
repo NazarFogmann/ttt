@@ -426,9 +426,10 @@ function targetid.HUDDrawTargetIDPlayers(tData)
     -- oof TTT, why so hacky?! Sets last seen player. Dear reader I don't like this as well, but it has to stay that way
     -- for compatibility reasons. At least it is uncluttered now!
     client.last_id = disguised and nil or ent
+    local spectator = client:IsSpec()
 
     -- do not show information when observing a player
-    if client:IsSpec() and IsValid(obsTgt) and ent == obsTgt then
+    if spectator and IsValid(obsTgt) and ent == obsTgt then
         return
     end
 

@@ -53,7 +53,7 @@ if (CLIENT) then
 	function ErrorFlashbangFlash()
 		local pl = LocalPlayer();
 
-		if pl:GetNetworkedFloat("RCS_flashed_time") > CurTime() then
+		if pl:GetNWFloat("RCS_flashed_time") > CurTime() then
 			if first then
 				first = false
 
@@ -72,8 +72,8 @@ if (CLIENT) then
 				end
 			end
 
-			local e = pl:GetNetworkedFloat("RCS_flashed_time"); --when it dies away
-			local s = pl:GetNetworkedFloat("RCS_flashed_time_start"); --when it started
+			local e = pl:GetNWFloat("RCS_flashed_time"); --when it dies away
+			local s = pl:GetNWFloat("RCS_flashed_time_start"); --when it started
 
 			local alpha;
 			if(e - CurTime() > effectLength)then
@@ -95,8 +95,8 @@ if (CLIENT) then
 	--motion blur and other junk
 	local function ErrorFlashbangMotionBlur()
 		local pl = LocalPlayer();
-		local e = pl:GetNetworkedFloat("RCS_flashed_time") + effectDelay; --when it dies away
-		local s = pl:GetNetworkedFloat("RCS_flashed_time_start"); --when it started
+		local e = pl:GetNWFloat("RCS_flashed_time") + effectDelay; --when it dies away
+		local s = pl:GetNWFloat("RCS_flashed_time_start"); --when it started
 		if (e > CurTime()  &&  e - effectDelay-CurTime() <= effectLength) then
 			local pf = 1 - (CurTime() - (e - effectLength)) / (effectLength);
 			DrawMotionBlur(0, pf / ((effectLength + effectDelay) / effectLength), 0);

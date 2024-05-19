@@ -2212,3 +2212,12 @@ L.label_level_sound_message = "Message sound level multiplier"
 -- 2024-03-07
 L.label_crosshair_static_gap_length = "Enable static crosshair gap length"
 L.label_crosshair_size_gap = "Crosshair gap size multiplier"
+
+-- 2023-11-09
+L.header_tarkov = "Escape from Kharkov"
+L.help_suppression = "Projectiles will begin to suppress players, reducing their will to fight, stamina and fps."
+L.label_suppression = "Enable Suppression"
+
+
+-- 2023-11-10
+L.too_low_stamina = "The suppression level is too intense to identify any specific details."

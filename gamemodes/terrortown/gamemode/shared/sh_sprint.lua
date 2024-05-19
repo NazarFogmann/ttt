@@ -81,8 +81,10 @@ function SPRINT:HandleStaminaCalculation(ply)
         -- stylua: ignore
         hook.Run("TTT2StaminaRegen", ply, rateModifier)
 
+        local tarkovFactor = math.max(0, math.min(ply:Health() / 100, 1.0 - ply:GetNWInt("EffectAMT")))
+
         newStamina =
-            math.min(sprintStamina + FrameTime() * rateModifier[1] * staminaRegeneratonRate, 1)
+            math.min(sprintStamina + FrameTime() * rateModifier[1] * staminaRegeneratonRate, 1, tarkovFactor)
     end
 
     ply:SetSprintStamina(newStamina)

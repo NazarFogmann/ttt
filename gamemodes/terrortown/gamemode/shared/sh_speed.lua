@@ -20,7 +20,7 @@ function SPEED:HandleSpeedCalculation(ply, moveData)
 
     -- Slow down ironsighters
     if ply:IsInIronsights() then
-        baseMultiplier = 120 / 220
+        baseMultiplier = SightsSlowdown or 0.5
         isSlowed = true
     end
 

@@ -52,12 +52,12 @@ function ENT:Explode()
 			simpendtime = math.floor(endtime);
 			tenthendtime = math.floor((endtime - simpendtime)*10);
 
-			if (pl:GetNetworkedFloat("RCS_flashed_time") > CurTime()) then --if you're already flashed
-				pl:SetNetworkedFloat("RCS_flashed_time", endtime + pl:GetNetworkedFloat("RCS_flashed_time") + CurTime() - pl:GetNetworkedFloat("RCS_flashed_time_start")); --add more to it
+			if (pl:GetNWFloat("RCS_flashed_time") > CurTime()) then --if you're already flashed
+				pl:SetNWFloat("RCS_flashed_time", endtime + pl:GetNWFloat("RCS_flashed_time") + CurTime() - pl:GetNWFloat("RCS_flashed_time_start")); --add more to it
 			else --not flashed
-				pl:SetNetworkedFloat("RCS_flashed_time", endtime + CurTime());
+				pl:SetNWFloat("RCS_flashed_time", endtime + CurTime());
 			end
-			pl:SetNetworkedFloat("RCS_flashed_time_start", CurTime());
+			pl:SetNWFloat("RCS_flashed_time_start", CurTime());
 			pl:SetStamina(0)
 		end
 	end
