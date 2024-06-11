@@ -58,7 +58,7 @@ function ENT:Explode()
 				pl:SetNWFloat("RCS_flashed_time", endtime + CurTime());
 			end
 			pl:SetNWFloat("RCS_flashed_time_start", CurTime());
-			pl:SetStamina(0)
+			pl:SetSprintStamina(0)
 		end
 	end
 	self.Entity:Remove();
