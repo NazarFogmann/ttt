@@ -64,7 +64,7 @@ function ENT:Explode(tr)
 
       util.BlastDamage(self, self:GetThrower(), pos, self:GetRadius(), self:GetDmg())
 
-      StartFires(pos, tr, 10, 20, false, self:GetThrower())
+      gameEffects.StartFires(pos, tr, 10, 20, false, self:GetThrower(), 500, false, 128, 2)
 
       self:SetDetonateExact(0)
 
@@ -72,7 +72,7 @@ function ENT:Explode(tr)
    else
       local spos = self:GetPos()
       local trs = util.TraceLine({start=spos + Vector(0,0,64), endpos=spos + Vector(0,0,-128), filter=self})
-      util.Decal("Scorch", trs.HitPos + trs.HitNormal, trs.HitPos - trs.HitNormal)      
+      util.Decal("Scorch", trs.HitPos + trs.HitNormal, trs.HitPos - trs.HitNormal)
 
       self:SetDetonateExact(0)
    end
