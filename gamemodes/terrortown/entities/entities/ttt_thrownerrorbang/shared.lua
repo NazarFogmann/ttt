@@ -53,9 +53,9 @@ if (CLIENT) then
 	function ErrorFlashbangFlash()
 		local pl = LocalPlayer();
 
-        if pl == NULL then
-            return
-        end
+                if pl == NULL then
+                        return
+                end
 
 		if pl:GetNWFloat("RCS_flashed_time") > CurTime() then
 			if first then
